@@ -2,24 +2,26 @@
   <h1 class="m-4">NGO</h1>
   <div class="row justify-content-between">
     <div class="col-2">
-      <nav class="bg-light p-3">
-        <div class="container-fluid">
-          <div class="sidebar-header">
-            <h3>Sidebar</h3>
+      <div class="h-100 d-flex align-items-stretch">
+        <nav class="bg-light p-3 w-100">
+          <div class="container-fluid">
+            <div class="sidebar-header">
+              <h3>Sidebar</h3>
+            </div>
+            <ul class="nav d-flex flex-column">
+              <li class="nav-item py-2">
+                <a class="nav-link" routerLink="/user-management" routerLinkActive="active">User Management</a>
+              </li>
+              <li class="nav-item py-2">
+                <a class="nav-link" routerLink="/donation-log" routerLinkActive="active">Donations Log</a>
+              </li>
+              <li class="nav-item py-2">
+                <a class="nav-link" routerLink="/donation-type-management" routerLinkActive="active">Donation Groups</a>
+              </li>
+            </ul>
           </div>
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/user-management" routerLinkActive="active">User Management</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/donation-log" routerLinkActive="active">Donations Log</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/donation-type-management" routerLinkActive="active">Donation Groups</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
     <div class="col-10">
       <router-outlet></router-outlet>
