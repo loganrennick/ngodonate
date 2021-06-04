@@ -1,4 +1,4 @@
-import { DonationType } from '../donation-type';
+import { DonationType } from '../../models/donation-type';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -8,16 +8,16 @@
                 <th>Email</th>
                 <th>Role</th>
                 <th class="text-center">
-                    <button type="button" class="btn btn-primary mr-2 py-0 px-4">Add User</button>
+                    <button type="button" class="btn btn-primary mr-2 py-0 px-4" (click)="addUser()">Add User</button>
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Mike</td>
-                <td>Smith</td>
-                <td>Mike@gmail.com</td>
-                <td>User</td>
+            <tr *ngFor="let user of users">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.eMail}}</td>
+                <td>{{user.userRole}}</td>
                 <td class="text-center d-flex justify-content-between">
                     <div class="w-100">
                         <button type="button" class="btn btn-primary mr-2 py-0 w-25">Edit</button>
