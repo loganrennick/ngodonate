@@ -7,6 +7,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { DonationLogComponent } from './donation-log/donation-log.component';
 import { DonationTypeManagementComponent } from './donation-type-management/donation-type-management.component';
 import { DonationStartComponent } from './donation-start/donation-start.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DonationStartComponent } from './donation-start/donation-start.componen
     UserManagementComponent,
     DonationLogComponent,
     DonationTypeManagementComponent,
-    DonationStartComponent
+    DonationStartComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
