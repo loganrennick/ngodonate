@@ -1,3 +1,4 @@
+import { DonationType } from '../donation-type';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,5 +12,13 @@ export class DonationTypeManagementComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  public groups: DonationType[] = [
+    { id: 1, Name: "Step Up for Students" },
+    { id: 2, Name: "Feed the Children" },
+    { id: 3, Name: "American Heart Association" },
+    { id: 4, Name: "Electronic Frontier Foundation" },
+    { id: 5, Name: "Room to Read" }
+  ]
 
 }

@@ -1,14 +1,21 @@
 <div class="p-3 border mr-4">
-    <h3 class="pb-3">Donation Type Management</h3>
+    <h3 class="pb-3">Donation Groups</h3>
     <div class="card-deck">
         <!-- @foreach (var service in Model) -->
-        <div class="col-3">
+        <div class="col-3" *ngFor="let group of groups;">
             <div class="card m-3">
-                <div class="card-header text-center">
-                    <h5>Service Name</h5>
+                <div class="card-header">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-center">
+                            <h5>{{group.Name}} </h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer text-center">
-                    <p>Rename; Delete</p>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <button type="button" class="btn btn-primary mr-3">Edit</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

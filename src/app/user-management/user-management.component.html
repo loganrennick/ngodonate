@@ -7,7 +7,9 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Functions</th>
+                <th class="text-center">
+                    <button type="button" class="btn btn-primary mr-2 py-0 px-4">Add User</button>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +18,12 @@
                 <td>Smith</td>
                 <td>Mike@gmail.com</td>
                 <td>User</td>
-                <td>Edit; Delete</td>
+                <td class="text-center d-flex justify-content-between">
+                    <div class="w-100">
+                        <button type="button" class="btn btn-primary mr-2 py-0 w-25">Edit</button>
+                        <button type="button" class="btn btn-danger mr-2 py-0 w-25">Delete</button>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
