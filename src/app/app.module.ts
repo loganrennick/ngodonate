@@ -3,10 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { DonationLogComponent } from './donation-log/donation-log.component';
+import { DonationTypeManagementComponent } from './donation-type-management/donation-type-management.component';
+import { DonationStartComponent } from './donation-start/donation-start.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserManagementComponent,
+    DonationLogComponent,
+    DonationTypeManagementComponent,
+    DonationStartComponent
   ],
   imports: [
     BrowserModule,
