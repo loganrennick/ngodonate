@@ -20,7 +20,11 @@ export class UserManagementComponent implements OnInit {
   ];
 
   addUser() {
-    this.router.navigate(['/Register/']);
+    this.router.navigate(['/register/']);
+  }
+
+  onSelect() {
+    this.router.navigate(['/user-edit']);
   }
 
 }

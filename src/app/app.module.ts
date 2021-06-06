@@ -10,6 +10,7 @@ import { DonationStartComponent } from './donation-start/donation-start.componen
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistrationComponent } from './registration/registration.component';
     DonationStartComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
