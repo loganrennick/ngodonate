@@ -9,23 +9,21 @@ import { Login } from 'src/models/login';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  constructor(public router: Router) { }
 
   public loginModel = new Login();
   ngOnInit(): void {
   }
 
-  onFormSubmit(loginForm:any)
-  {
+  onFormSubmit(loginForm: any) {
 
     console.log(this.loginModel);
 
   }
 
-  OnClickRegister()
-  {
+  OnClickRegister() {
     console.log("Register Button");
-    this.router.navigate(['Register']);
+    this.router.navigate(['register']);
   }
 
 

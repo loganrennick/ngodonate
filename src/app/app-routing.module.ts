@@ -10,10 +10,10 @@ import { UserManagementComponent } from './user-management/user-management.compo
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'Register', component: RegistrationComponent },
   { path: 'donation-log', component: DonationLogComponent },
   { path: 'donation-start', component: DonationStartComponent },
   { path: 'donation-type-management', component: DonationTypeManagementComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
