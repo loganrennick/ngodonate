@@ -16,6 +16,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { PersonalInformationComponent } from './personal-information/personal-information.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     UserEditComponent,
     PersonalInformationComponent,
     GiftsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
