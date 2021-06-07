@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DonationType } from 'src/models/donation-type';
 
 @Component({
@@ -8,7 +9,7 @@ import { DonationType } from 'src/models/donation-type';
 })
 export class DonationStartComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,5 +21,9 @@ export class DonationStartComponent implements OnInit {
     { id: 4, Name: "Electronic Frontier Foundation" },
     { id: 5, Name: "Room to Read" }
   ];
+
+  onClick() {
+    this.router.navigate(['/personal-information/']);
+  }
 
 }

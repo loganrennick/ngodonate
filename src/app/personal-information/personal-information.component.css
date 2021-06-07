@@ -1,0 +1,7 @@
+.btn-orange {
+    background-color: rgb(226, 74, 19) !important;
+    border-color: coral;
+}
+.btn-orange:hover,  .btn-orange:active, .btn-orange:visited  {
+    background-color: rgb(187, 58, 11) !important;
+}

@@ -4,6 +4,13 @@
 .card-deck {
     padding: 15px;
 }
-.btn {
+.btn-card {
     width: 90px;
+}
+.add-group a{
+    font-size: 1.2rem;
+    color: #007bff;
+}
+.add-group a:hover{
+    color: #04478f;
 }

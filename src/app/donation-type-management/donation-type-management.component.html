@@ -1,5 +1,16 @@
 <div class="p-3 border mr-3">
-    <h3 class="pb-3">Donation Groups</h3>
+
+
+    <div class="d-flex justify-content-between p-4">
+        <h3 class="ml-2">Donation Groups</h3>
+        <div class="mr-2">
+            <div class="float-right btn btn-outline-dark" style="font-size: 1.1rem"><i
+                    class="bi bi-plus-square mr-2"></i>
+                Add Donation Group
+            </div>
+        </div>
+    </div>
+
     <div class="card-deck">
         <!-- @foreach (var service in Model) -->
         <div class="col-3" *ngFor="let group of groups; index as i">
@@ -16,11 +27,11 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center align-items-center h-100">
-                        <button type="button" class="btn btn-primary mr-3" *ngIf="!edit[i]"
+                        <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="!edit[i]"
                             (click)="onClick(i, group.Name)" [disabled]="editing">Edit</button>
-                        <button type="button" class="btn btn-primary mr-3" *ngIf="edit[i]"
+                        <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
                             (click)="onClickSubmit(i,userInput)">Done</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger btn-card">Delete</button>
                     </div>
                 </div>
             </div>
