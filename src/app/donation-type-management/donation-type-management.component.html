@@ -31,7 +31,7 @@
                             (click)="onClick(i, group.Name)" [disabled]="editing">Edit</button>
                         <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
                             (click)="onClickSubmit(i,userInput)">Done</button>
-                        <button type="button" class="btn btn-danger btn-card">Delete</button>
+                        <button type="button" class="btn btn-danger btn-card" [disabled]="editing">Delete</button>
                     </div>
                 </div>
             </div>
