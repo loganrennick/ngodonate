@@ -1,6 +1,5 @@
 import { DonationType } from '../../models/donation-type';
 import { Component, OnInit } from '@angular/core';
-import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-donation-type-management',

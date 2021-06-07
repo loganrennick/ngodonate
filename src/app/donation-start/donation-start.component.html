@@ -1,1 +1,13 @@
-<h1>Get Started Donating</h1>
+<div class="p-3 border mr-3">
+    <div>
+        <h3 class="pb-3">Ready to Donate?</h3>
+        <div>
+            <p>Please select the NGO you wish to donate to.</p>
+        </div>
+        <div class="card-deck">
+            <!-- @foreach (var service in Model) -->
+            <div class="d-flex flex-wrap" *ngFor="let group of groups; index as i">
+                <button type="button" class="btn btn-outline-dark m-3">{{group.Name}}</button>
+            </div>
+        </div>
+    </div>
