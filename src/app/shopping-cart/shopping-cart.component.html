@@ -1,14 +1,11 @@
 <div class="p-3 border mr-3">
-    <div class="row justify-content-center py-5">
-        <div class="col-5">
-            <h3 class="pb-3">Personal Information</h3>
+    <div style="background-color: #343a40; color: white; border-radius: 15px;">
+        <div class="row pb-5">
+            <h2 class="pl-5 pt-5">Shopping Cart</h2>
         </div>
-        <div class="col-7">
-            <div class="mt-5">
-                <label>First Name</label>
-                <input type='text' name="firstName" class="form-control">
-            </div>
-
+        <div class="my-4 pb-5 row mr-3 d-flex flex-row-reverse">
+            <div class="btn btn-secondary btn-orange" (click)="continue()">Continue</div>
+            <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</div>
         </div>
     </div>
 </div>

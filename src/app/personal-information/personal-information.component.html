@@ -1,50 +1,53 @@
 <div class="p-3 border mr-3">
     <div style="background-color: #343a40; color: white; border-radius: 15px;">
-        <div class="row justify-content-center py-5">
+        <div class="row pl-5 pt-5">
+            <p>Thank you for your choice to donate. Before we can proceed, we need some information from you first.</p>
+        </div>
+        <div class="row pb-5 justify-content-center">
             <div class="col-5">
-                <h3 class="pl-5">PERSONAL INFORMATION</h3>
+                <h2 class="pl-5 pt-2">Personal Information</h2>
             </div>
             <div class="col-7 mt-5">
                 <div class="mr-3">
                     <div class="mt-5 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"First Name" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"First Name" }}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Last Name" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Last Name" }}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Phone #" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Phone #"}}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Email Address" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Email Address"}}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Address" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Address" }}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"City" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"City" }}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"State" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"State"}}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Country" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Country"}}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-3 row mr-3 d-flex flex-row-reverse">
-                        <label class="mr-3 mt-2 order-2 ">{{"Zip" | uppercase}}</label>
+                        <label class="mr-3 mt-2 order-2 ">{{"Zip"}}</label>
                         <input type='text' class="form-control w-75 order-1">
                     </div>
                     <div class="mt-5 row mr-3 d-flex flex-row-reverse">
-                        <div class="btn btn-secondary btn-orange">CONTINUE</div>
-                        <div class="btn btn-secondary btn-orange mr-2">CANCEL</div>
+                        <div class="btn btn-secondary btn-orange" (click)="continue()">Continue</div>
+                        <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</div>
                     </div>
                 </div>
             </div>
