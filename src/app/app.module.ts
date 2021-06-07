@@ -10,6 +10,8 @@ import { DonationStartComponent } from './donation-start/donation-start.componen
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { RegistrationComponent } from './registration/registration.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
