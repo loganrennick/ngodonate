@@ -2,18 +2,24 @@
     <h3 class="pb-3">Donation Groups</h3>
     <div class="card-deck">
         <!-- @foreach (var service in Model) -->
-        <div class="col-3" *ngFor="let group of groups;">
+        <div class="col-3" *ngFor="let group of groups; index as i">
             <div class="card m-3">
                 <div class="card-header">
                     <div class="d-flex justify-content-center align-items-center h-100">
-                        <div class="text-center">
-                            <h5>{{group.Name}} </h5>
+                        <div class="text-center" *ngIf="!edit[i]">
+                            <h5>{{group.Name}}</h5>
+                        </div>
+                        <div>
+                            <input type='text' *ngIf="edit[i]" class="form-control" [(ngModel)]="userInput">
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center align-items-center h-100">
-                        <button type="button" class="btn btn-primary mr-3">Edit</button>
+                        <button type="button" class="btn btn-primary mr-3" *ngIf="!edit[i]"
+                            (click)="onClick(i, group.Name)" [disabled]="editing">Edit</button>
+                        <button type="button" class="btn btn-primary mr-3" *ngIf="edit[i]"
+                            (click)="onClickSubmit(i,userInput)">Done</button>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </div>

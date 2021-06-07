@@ -11,7 +11,7 @@ import { UsersService } from '../services/users.service';
 export class LoginComponent implements OnInit {
 
   constructor(public router:Router,public dbUserService:UsersService) { }
-
+  
   public loginModel = new Login();
   public users:any;
   public errorMsg:any ;
@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onFormSubmit(loginForm:any)
-  {
+  onFormSubmit(loginForm: any) {
 
     console.log(this.loginModel);
 
@@ -59,7 +58,7 @@ export class LoginComponent implements OnInit {
 
   OnClickRegister() {
     console.log("Register Button");
-    this.router.navigate(['Register']);
+    this.router.navigate(['register']);
   }
 
 

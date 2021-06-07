@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from './services/users.service';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UsersService } from './services/users.service';
     DonationStartComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
