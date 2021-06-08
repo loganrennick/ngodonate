@@ -76,15 +76,6 @@ export class DonationTypeManagementComponent implements OnInit {
     )
   }
 
-  onClick(i: number, name: string) {
-    if (this.edit[i])
-      this.edit[i] = false;
-    else
-      this.edit[i] = true;
-    this.userInput = name;
-    this.editing = true;
-  }
-
 
   onClickSubmit(i: number, ngo: string) {
     if (this.edit[i])
@@ -94,5 +85,37 @@ export class DonationTypeManagementComponent implements OnInit {
     this.groups[i].Name = ngo;
     this.editing = false;
   }
+
+
+  updateGroup(i: number, id: any) {
+    if (this.edit[i])
+      this.edit[i] = false;
+    else
+      this.edit[i] = true;
+    this.ngoService.updateDonationType(id, this.groupModel).subscribe(
+      (data) => {
+        this.group = data;
+        this.ngoService.getDonationTypes().subscribe(
+          (data) => {
+            this.groups = data;
+            this.editing = false;
+            this.groupModel = new DonationType();
+          },
+          (error) => this.errorMsg = error
+        )
+      },
+      (error) => this.errorMsg = error
+    )
+  }
+
+  onClick(i: number, name: string) {
+    if (this.edit[i])
+      this.edit[i] = false;
+    else
+      this.edit[i] = true;
+    this.groupModel.Name = name;
+    this.editing = true;
+  }
+
 
 }

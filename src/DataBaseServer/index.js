@@ -196,3 +196,17 @@ app.delete("/api/DonationTypes/:id", (req, res, next) => {
         res.json(object);
     })
 })
+
+/* UPDATE ONE */
+app.put("/api/DonationTypes/:id", (req, res, next) => {
+    let id = req.params.id;
+    let updated_object;
+    if (req.body !== undefined) {
+        updated_object = req.body;
+    }
+    DonationType.findByIdAndUpdate(id, updated_object, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+
+})

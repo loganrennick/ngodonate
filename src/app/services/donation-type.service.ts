@@ -30,4 +30,8 @@ export class DonationTypeService {
       .pipe(catchError(this.errorHandler));
   }
 
+  updateDonationType(id: any, record: any): Observable<DonationType[]> {
+    return this.http.put<DonationType[]>(this._url + '/' + id, record)
+      .pipe(catchError(this.errorHandler));
+  }
 }

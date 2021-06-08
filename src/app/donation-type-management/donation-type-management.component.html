@@ -33,7 +33,7 @@
                             <h5>{{group.Name}}</h5>
                         </div>
                         <div>
-                            <input type='text' *ngIf="edit[i]" class="form-control" [(ngModel)]="userInput">
+                            <input type='text' *ngIf="edit[i]" class="form-control" [(ngModel)]="groupModel.Name">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="!edit[i]"
                             (click)="onClick(i, group.Name)" [disabled]="editing">Edit</button>
                         <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
-                            (click)="onClickSubmit(i,userInput)">Done</button>
+                            (click)="updateGroup(i, group._id)">Done</button>
                         <button type="button" class="btn btn-danger btn-card" [disabled]="editing"
                             (click)="deleteGroup(group._id)">Delete</button>
                     </div>
