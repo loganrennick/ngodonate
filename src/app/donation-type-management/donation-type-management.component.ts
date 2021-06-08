@@ -1,5 +1,7 @@
 import { DonationType } from '../../models/donation-type';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { DonationTypeService } from '../services/donation-type.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-donation-type-management',
@@ -8,24 +10,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationTypeManagementComponent implements OnInit {
 
-  public groups: DonationType[] = [
-    { id: 1, Name: "Step Up for Students" },
-    { id: 2, Name: "Feed the Children" },
-    { id: 3, Name: "American Heart Association" },
-    { id: 4, Name: "Electronic Frontier Foundation" },
-    { id: 5, Name: "Room to Read" }
-  ];
-
+  public groups: any;
   public edit: boolean[] = [];
   public editing: boolean = false;
   public userInput: string = "";
+  public isPopupVisible: boolean = false;
+  groupModel = new DonationType();
+  group: any;
+  errorMsg: any;
+  modalRef: any;
 
-  constructor() { }
+  constructor(private ngoService: DonationTypeService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    for (let i = 0; i < this.groups.length; i++) {
-      this.edit.push(false);
-    }
+    this.ngoService.getDonationTypes().subscribe(
+      (data) => {
+        this.groups = data;
+        console.log(data);
+        for (let i = 0; i < this.groups.length; i++) {
+          this.edit.push(false);
+        }
+      },
+      (error) => this.errorMsg = error
+    )
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  addGroup() {
+    this.ngoService.postDonationType(this.groupModel).subscribe(
+      (data) => {
+        this.group = data;
+        this.ngoService.getDonationTypes().subscribe(
+          (data) => {
+            this.groups = data;
+            this.groupModel = new DonationType();
+            this.edit.push(false);
+            this.modalRef.hide();
+          },
+          (error) => this.errorMsg = error
+        )
+      },
+      (error) => this.errorMsg = error
+    )
+  }
+
+  deleteGroup(id: any) {
+    this.ngoService.deleteDonationType(id).subscribe(
+      (data) => {
+        this.group = data;
+        this.ngoService.getDonationTypes().subscribe(
+          (data) => {
+            this.groups = data;
+            this.edit = [];
+            for (let i = 0; i < this.groups.length; i++) {
+              this.edit.push(false);
+            }
+          },
+          (error) => this.errorMsg = error
+        )
+      },
+      (error) => this.errorMsg = error
+    )
   }
 
   onClick(i: number, name: string) {

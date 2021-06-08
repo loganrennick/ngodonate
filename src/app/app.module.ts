@@ -18,6 +18,7 @@ import { PersonalInformationComponent } from './personal-information/personal-in
 import { GiftsComponent } from './gifts/gifts.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [UsersService, LoginService],
   bootstrap: [AppComponent]
