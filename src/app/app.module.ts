@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserManagementComponent } from './user-management/user-management.component';
@@ -13,15 +13,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from './services/users.service';
 import { UserEditComponent } from './user-edit/user-edit.component';
-<<<<<<< HEAD
 import { LoginService } from './services/login.service';
-import { LoginToPost } from 'src/models/login';
-=======
 import { PersonalInformationComponent } from './personal-information/personal-information.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
->>>>>>> d828020eea7fa957f7fdba70d3c93492fc87007f
 
 @NgModule({
   declarations: [
@@ -45,8 +41,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService,LoginService],
+  providers: [UsersService, LoginService],
   bootstrap: [AppComponent]
- 
+
 })
 export class AppModule { }

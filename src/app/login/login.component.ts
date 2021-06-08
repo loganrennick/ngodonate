@@ -11,83 +11,54 @@ import { UsersService } from '../services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router:Router,public dbUserService:UsersService,public dbLoginService:LoginService) { }
-  
+  constructor(public router: Router, public dbUserService: UsersService, public dbLoginService: LoginService) { }
+
   public loginModel = new LoginToPost();
-  public users:any;
-  public templog:any;
-  public errorMsg:any ;
-  public validUser:boolean = false;
+  public users: any;
+  public templog: any;
+  public errorMsg: any;
+  public validUser: boolean = false;
 
   ngOnInit(): void {
-
-
     this.dbLoginService.getLoginUsers().subscribe(
-      (data) => {this.users=data;console.log(this.users);
-      
-      this.users.forEach((element: { _id: any; }) => {
-
-        this.dbLoginService.deleteLoginUser(element._id).subscribe();
-        
-      });      
-      
-      
-      
+      (data) => {
+        this.users = data; console.log(this.users);
+        this.users.forEach((element: { _id: any; }) => {
+          this.dbLoginService.deleteLoginUser(element._id).subscribe();
+        });
       },
-      (error)=>{this.errorMsg=error},
-      ()=>console.log("completed")
-    );       
-
-    
-
-
+      (error) => { this.errorMsg = error },
+      () => console.log("completed")
+    );
   }
 
   onFormSubmit(loginForm: any) {
-
     console.log(this.loginModel);
-
     this.dbUserService.getUsers().subscribe(
       (data) => {
         this.users = data;
-
-        this.users.forEach((element: { userID: any; passWord: any;userRole:any }) => {
-
-          //console.log(element.userID);
-
+        this.users.forEach((element: { userID: any; passWord: any; userRole: any }) => {
           if (element.userID === this.loginModel.userID && element.passWord === this.loginModel.passWord) {
-
             this.validUser = true;
-            this.loginModel.userRole=element.userRole; // role from user registration component
-            // this.loginModel.userID=element.userID;
-
-            // this.loginModel.passWord=element.passWord;
-            
+            this.loginModel.userRole = element.userRole; // role from user registration component
             this.dbLoginService.postIntoLogin(this.loginModel).subscribe(
-              (data) => {this.templog = data;console.log(this.templog);
-                },
-            (error) => this.errorMsg = error
+              (data) => {
+                this.templog = data; console.log(this.templog);
+              },
+              (error) => this.errorMsg = error
             );
             console.log(this.validUser);
-
             this.router.navigate(['/user-management/']);
             return;
-
           }
-
         });
       },
-
       (error) => { this.errorMsg = error },
       () => console.log("completed")
-
     );
-
-    if(this.validUser == false)
-    {
+    if (this.validUser == false) {
       console.log("Not valid user");
     }
-
   }
 
   OnClickRegister() {

@@ -9,28 +9,25 @@ import { Login, LoginToPost } from 'src/models/login';
 })
 export class LoginService {
 
-  private _url:string="http://localhost:3000/api/logins";
-  constructor(private http : HttpClient) { }
+  private _url: string = "http://localhost:3000/api/logins";
+  constructor(private http: HttpClient) { }
 
-  postIntoLogin(record: any): Observable<LoginToPost[]>{
-   
+  postIntoLogin(record: any): Observable<LoginToPost[]> {
+
     return this.http.post<LoginToPost[]>(this._url, record)
-    .pipe(catchError(this.errorhandler));
+      .pipe(catchError(this.errorhandler));
   }
-  getLoginUsers():Observable<Login[]>
-  {
-     return this.http.get<Login[]>(this._url)
-    .pipe(catchError(this.errorhandler));
- 
+  getLoginUsers(): Observable<Login[]> {
+    return this.http.get<Login[]>(this._url)
+      .pipe(catchError(this.errorhandler));
   }
 
   deleteLoginUser(id: any) {
     return this.http.delete(this._url + '/' + id);
   }
-  errorhandler(error:HttpErrorResponse)
-  {
+  errorhandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server error");
   }
- 
-  
+
+
 }

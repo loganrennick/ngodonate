@@ -116,6 +116,13 @@ app.put("/api/Users/:id", (req, res, next) => {
 
 //Login
 
+app.get("/api/Logins", (req, res, next) => {
+    Login.find((err, data) => {
+        if (err) return next(err)
+        res.json(data);
+    })
+})
+
 
 app.post("/api/Logins", (req, res, next) => {
 

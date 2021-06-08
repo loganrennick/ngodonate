@@ -1,45 +1,4 @@
 <div class="p-3 border mr-3">
-<<<<<<< HEAD
-    <h3 class="pb-3">User Management</h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Role</th>
-
-                <!-- <ng-container *ngIf="curUserRole == 'Admin' then AdminUser">
-                </ng-container>
-                <ng-template #AdminUser> -->
-                    <th class="text-center">
-                        <button type="button" class="btn btn-primary mr-2 py-0 px-4" (click)="addUser()">Add User</button>
-                    </th>
-                <!-- </ng-template> -->
-                
-                 
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.eMail}}</td>
-                <td>{{user.userRole}}</td>
-                <!-- <ng-container *ngIf="curUserRole == 'Admin' then AdminUser">
-                </ng-container>
-                <ng-template #AdminUser> -->
-                <td class="text-center d-flex justify-content-between">
-                    <div class="w-100">
-                        <button type="button" class="btn btn-primary mr-2 py-0 w-25" (click)="editUser(user)">Edit</button>
-                        <button type="button" class="btn btn-danger mr-2 py-0 w-25" (click)="deleteUser(user)">Delete</button>
-                    </div>
-                </td>
-                <!-- </ng-template> -->
-            </tr>
-        </tbody>
-    </table>
-=======
     <div class="p-4">
         <h3 class="pb-3">User Management</h3>
         <table class="table table-bordered">
@@ -49,10 +8,16 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <!-- <ng-container *ngIf="curUserRole == 'Admin' then AdminUser">
+                    </ng-container>
+                    <ng-template #AdminUser> -->
                     <th class="text-center">
                         <button type="button" class="btn btn-primary mr-2 py-0 px-4" (click)="addUser()">Add
                             User</button>
                     </th>
+                    <!-- </ng-template> -->
+
+
                 </tr>
             </thead>
             <tbody>
@@ -61,17 +26,20 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.eMail}}</td>
                     <td>{{user.userRole}}</td>
+                    <!-- <ng-container *ngIf="curUserRole == 'Admin' then AdminUser">
+                    </ng-container>
+                    <ng-template #AdminUser> -->
                     <td class="text-center d-flex justify-content-between">
                         <div class="w-100">
                             <button type="button" class="btn btn-primary mr-2 py-0 w-25"
-                                (click)="editUser()">Edit</button>
+                                (click)="editUser(user)">Edit</button>
                             <button type="button" class="btn btn-danger mr-2 py-0 w-25"
                                 (click)="deleteUser(user)">Delete</button>
                         </div>
                     </td>
+                    <!-- </ng-template> -->
                 </tr>
             </tbody>
         </table>
     </div>
->>>>>>> d828020eea7fa957f7fdba70d3c93492fc87007f
 </div>
