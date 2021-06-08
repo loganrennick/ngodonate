@@ -58,22 +58,24 @@ export class DonationTypeManagementComponent implements OnInit {
   }
 
   deleteGroup(id: any) {
-    this.ngoService.deleteDonationType(id).subscribe(
-      (data) => {
-        this.group = data;
-        this.ngoService.getDonationTypes().subscribe(
-          (data) => {
-            this.groups = data;
-            this.edit = [];
-            for (let i = 0; i < this.groups.length; i++) {
-              this.edit.push(false);
-            }
-          },
-          (error) => this.errorMsg = error
-        )
-      },
-      (error) => this.errorMsg = error
-    )
+    if (confirm("Are you sure you want to delete this donation type?")) {
+      this.ngoService.deleteDonationType(id).subscribe(
+        (data) => {
+          this.group = data;
+          this.ngoService.getDonationTypes().subscribe(
+            (data) => {
+              this.groups = data;
+              this.edit = [];
+              for (let i = 0; i < this.groups.length; i++) {
+                this.edit.push(false);
+              }
+            },
+            (error) => this.errorMsg = error
+          )
+        },
+        (error) => this.errorMsg = error
+      )
+    }
   }
 
 
