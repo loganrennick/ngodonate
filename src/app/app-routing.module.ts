@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'donation-type-management', component: DonationTypeManagementComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'user-management', component: UserManagementComponent },
-  { path: 'user-edit', component: UserEditComponent },
+  { path: 'user-edit/:id', component: UserEditComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

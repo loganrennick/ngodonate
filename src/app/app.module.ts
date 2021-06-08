@@ -13,6 +13,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from './services/users.service';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { LoginService } from './services/login.service';
+import { LoginToPost } from 'src/models/login';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService],
+  providers: [UsersService,LoginService],
   bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

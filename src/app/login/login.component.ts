@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login } from 'src/models/login';
+import { Login, LoginToPost } from 'src/models/login';
+import { LoginService } from '../services/login.service';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -10,14 +11,36 @@ import { UsersService } from '../services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router:Router,public dbUserService:UsersService) { }
+  constructor(public router:Router,public dbUserService:UsersService,public dbLoginService:LoginService) { }
   
-  public loginModel = new Login();
+  public loginModel = new LoginToPost();
   public users:any;
+  public templog:any;
   public errorMsg:any ;
   public validUser:boolean = false;
 
   ngOnInit(): void {
+
+
+    this.dbLoginService.getLoginUsers().subscribe(
+      (data) => {this.users=data;console.log(this.users);
+      
+      this.users.forEach((element: { _id: any; }) => {
+
+        this.dbLoginService.deleteLoginUser(element._id).subscribe();
+        
+      });      
+      
+      
+      
+      },
+      (error)=>{this.errorMsg=error},
+      ()=>console.log("completed")
+    );       
+
+    
+
+
   }
 
   onFormSubmit(loginForm: any) {
@@ -28,14 +51,25 @@ export class LoginComponent implements OnInit {
       (data) => {
         this.users = data;
 
-        this.users.forEach((element: { userID: any; passWord: any }) => {
+        this.users.forEach((element: { userID: any; passWord: any;userRole:any }) => {
 
           //console.log(element.userID);
 
           if (element.userID === this.loginModel.userID && element.passWord === this.loginModel.passWord) {
 
             this.validUser = true;
+            this.loginModel.userRole=element.userRole; // role from user registration component
+            // this.loginModel.userID=element.userID;
+
+            // this.loginModel.passWord=element.passWord;
+            
+            this.dbLoginService.postIntoLogin(this.loginModel).subscribe(
+              (data) => {this.templog = data;console.log(this.templog);
+                },
+            (error) => this.errorMsg = error
+            );
             console.log(this.validUser);
+
             this.router.navigate(['/user-management/']);
             return;
 

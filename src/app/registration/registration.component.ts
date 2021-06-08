@@ -23,7 +23,7 @@ export class RegistrationComponent implements OnInit {
   onFormSubmit(RegistrationForm:any)
   {
     
-    this.regModel.userRole="User"; //setting the role as User
+    //this.regModel.userRole="User"; //setting the role as User
 
     this.dbUserService.postIntoUsers(this.regModel).subscribe(
       (data) => {this.users = data;console.log(data);
@@ -33,6 +33,10 @@ export class RegistrationComponent implements OnInit {
 
   this.router.navigate(['/user-management/']);
 
+  }
+  OnClickCancel()
+  {
+    this.router.navigate(['/user-management/']);
   }
 
 }
