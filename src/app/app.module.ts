@@ -13,8 +13,15 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from './services/users.service';
 import { UserEditComponent } from './user-edit/user-edit.component';
+<<<<<<< HEAD
 import { LoginService } from './services/login.service';
 import { LoginToPost } from 'src/models/login';
+=======
+import { PersonalInformationComponent } from './personal-information/personal-information.component';
+import { GiftsComponent } from './gifts/gifts.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+>>>>>>> d828020eea7fa957f7fdba70d3c93492fc87007f
 
 @NgModule({
   declarations: [
@@ -26,7 +33,11 @@ import { LoginToPost } from 'src/models/login';
     PageNotFoundComponent,
     LoginComponent,
     RegistrationComponent,
-    UserEditComponent
+    UserEditComponent,
+    PersonalInformationComponent,
+    GiftsComponent,
+    ShoppingCartComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
