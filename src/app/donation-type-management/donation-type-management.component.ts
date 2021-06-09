@@ -17,6 +17,8 @@ export class DonationTypeManagementComponent implements OnInit {
   group: any; // DonationType
   errorMsg: any;
   modalRef: any;
+  modalRef2: any;
+  currID: any;
 
   constructor(private ngoService: DonationTypeService, private modalService: BsModalService) { }
 
@@ -34,7 +36,11 @@ export class DonationTypeManagementComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, { id: 1, class: 'first' });
+  }
+
+  openModal2(template: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(template, { id: 2, class: 'second' });
   }
 
   addGroup() {
@@ -55,25 +61,36 @@ export class DonationTypeManagementComponent implements OnInit {
     )
   }
 
+  deleteDialog(id: any, template: TemplateRef<any>) {
+    console.log(id);
+    console.log(template);
+    this.openModal2(template);
+    this.currID = id;
+  }
+
+  closeDeleteDialog() {
+    this.currID = "";
+    this.modalRef2.hide();
+  }
+
   deleteGroup(id: any) {
-    if (confirm("Are you sure you want to delete this donation type?")) {
-      this.ngoService.deleteDonationType(id).subscribe(
-        (data) => {
-          this.group = data;
-          this.ngoService.getDonationTypes().subscribe(
-            (data) => {
-              this.groups = data;
-              this.edit = [];
-              for (let i = 0; i < this.groups.length; i++) {
-                this.edit.push(false);
-              }
-            },
-            (error) => this.errorMsg = error
-          )
-        },
-        (error) => this.errorMsg = error
-      )
-    }
+    this.ngoService.deleteDonationType(id).subscribe(
+      (data) => {
+        this.group = data;
+        this.ngoService.getDonationTypes().subscribe(
+          (data) => {
+            this.groups = data;
+            this.edit = [];
+            for (let i = 0; i < this.groups.length; i++) {
+              this.edit.push(false);
+            }
+            this.closeDeleteDialog();
+          },
+          (error) => this.errorMsg = error
+        )
+      },
+      (error) => this.errorMsg = error
+    )
   }
 
   updateGroup(i: number, id: any) {
