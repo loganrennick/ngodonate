@@ -5,7 +5,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-9">
+            <div class="col-9 pr-0">
                 <div class="px-5">
                     <h3 class="pb-3">Order Summary</h3>
                     <table class="table">
@@ -38,8 +38,8 @@
                     </table>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="m-3 p-3" style="background-color: grey; border-radius: 10px;">
+            <div class="col-3 pl-0">
+                <div class="my-3 p-4 mr-3 " style="background-color: #44494e; border-radius: 10px;">
                     <div class="row d-flex justify-content-center">
                         {{quantity}} item in cart
                     </div>
@@ -50,12 +50,12 @@
                     </div>
                     <hr>
                     <div class="row d-flex justify-content-center">
-                        <h4>Grand Total - $10000</h4>
+                        <h5>Grand Total - $1000</h5>
                     </div>
                     <hr>
-                    <div class="my-4 pt-5  row d-flex justify-content-end mr-1">
-                        <div class="btn btn-secondary btn-orange my-2 mr-2" (click)="cancel()">Back</div>
-                        <div class="btn btn-secondary btn-orange my-2" (click)="continue()">Confirm Purchase</div>
+                    <div class="my-4 pt-5  row d-flex justify-content-center">
+                        <div class="btn btn-secondary btn-orange m-1" (click)="cancel()">Back</div>
+                        <div class="btn btn-secondary btn-orange m-1" (click)="continue()">Purchase</div>
                     </div>
                 </div>
             </div>
