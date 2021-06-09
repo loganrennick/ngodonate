@@ -40,7 +40,7 @@
                 <div class="card-footer">
                     <div class="d-flex justify-content-center align-items-center h-100">
                         <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="!edit[i]"
-                            (click)="onClick(i, group.Name)" [disabled]="editing">Edit</button>
+                            (click)="startEdit(i, group.Name)" [disabled]="editing">Edit</button>
                         <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
                             (click)="updateGroup(i, group._id)">Done</button>
                         <button type="button" class="btn btn-danger btn-card" [disabled]="editing"

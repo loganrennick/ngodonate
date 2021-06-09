@@ -5,3 +5,13 @@
 .btn-orange:hover,  .btn-orange:active, .btn-orange:visited  {
     background-color: rgb(187, 58, 11) !important;
 }
+hr {
+    border-top: 3px solid rgb(255 255 255 / 10%);
+} 
+a {
+    color: coral !important;
+}
+.edit {
+    text-shadow: none !important;
+    color: coral;
+}

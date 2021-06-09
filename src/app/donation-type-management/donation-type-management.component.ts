@@ -10,13 +10,11 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class DonationTypeManagementComponent implements OnInit {
 
-  public groups: any;
-  public edit: boolean[] = [];
-  public editing: boolean = false;
-  public userInput: string = "";
-  public isPopupVisible: boolean = false;
+  public groups: any; // DonationType[]
+  public edit: boolean[] = []; // status of each donation type - are they being edited?
+  public editing: boolean = false; // is a donation type being edited
   groupModel = new DonationType();
-  group: any;
+  group: any; // DonationType
   errorMsg: any;
   modalRef: any;
 
@@ -78,17 +76,6 @@ export class DonationTypeManagementComponent implements OnInit {
     }
   }
 
-
-  onClickSubmit(i: number, ngo: string) {
-    if (this.edit[i])
-      this.edit[i] = false;
-    else
-      this.edit[i] = true;
-    this.groups[i].Name = ngo;
-    this.editing = false;
-  }
-
-
   updateGroup(i: number, id: any) {
     if (this.edit[i])
       this.edit[i] = false;
@@ -110,7 +97,7 @@ export class DonationTypeManagementComponent implements OnInit {
     )
   }
 
-  onClick(i: number, name: string) {
+  startEdit(i: number, name: string) {
     if (this.edit[i])
       this.edit[i] = false;
     else
@@ -118,6 +105,5 @@ export class DonationTypeManagementComponent implements OnInit {
     this.groupModel.Name = name;
     this.editing = true;
   }
-
 
 }
