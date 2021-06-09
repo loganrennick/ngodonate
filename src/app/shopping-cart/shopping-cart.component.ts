@@ -25,6 +25,10 @@ export class ShoppingCartComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  addDonation() {
+    this.router.navigate(['/donation-start/']);
+  }
+
   cancel() {
     this.router.navigate(['/gifts/']);
   }

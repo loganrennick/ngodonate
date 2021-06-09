@@ -14,4 +14,8 @@ a {
 .edit {
     text-shadow: none !important;
     color: coral;
+    opacity: initial;
+}
+.edit:hover {
+    opacity: 0.75;
 }

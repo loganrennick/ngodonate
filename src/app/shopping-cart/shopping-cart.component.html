@@ -44,7 +44,9 @@
                         {{quantity}} item in cart
                     </div>
                     <div class="row d-flex justify-content-center pb-3">
-                        <a style="text-decoration: underline;">Continue Shopping</a>
+                        <a class="close edit" style="text-decoration: underline; font-size:1.1rem;"
+                            (click)="addDonation()">Continue
+                            Shopping</a>
                     </div>
                     <hr>
                     <div class="row d-flex justify-content-center">
@@ -66,7 +68,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                     <input type="number" class="form-control w-25 mr-3" [(ngModel)]="quantity" name="Quantity">
-                    <button type="button" class="btn btn-primary " (click)="updateQuantity()">Submit</button>
+                    <button type="button" class="btn btn-primary " (click)="updateQuantity()">Ok</button>
                 </div>
             </ng-template>
         </div>
