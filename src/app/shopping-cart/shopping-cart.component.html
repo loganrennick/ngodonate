@@ -53,9 +53,9 @@
                         <h4>Grand Total - $10000</h4>
                     </div>
                     <hr>
-                    <div class="my-4 pt-5  row d-flex justify-content-center">
-                        <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Back</div>
-                        <div class="btn btn-secondary btn-orange" (click)="continue()">Confirm Purchase</div>
+                    <div class="my-4 pt-5  row d-flex justify-content-end mr-1">
+                        <div class="btn btn-secondary btn-orange my-2 mr-2" (click)="cancel()">Back</div>
+                        <div class="btn btn-secondary btn-orange my-2" (click)="continue()">Confirm Purchase</div>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </button>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
-                    <input type="number" class="form-control w-25 mr-3" [(ngModel)]="quantity" name="Quantity">
+                    <input type="number" min="0" class="form-control w-25 mr-3" [(ngModel)]="quantity" name="Quantity">
                     <button type="button" class="btn btn-primary " (click)="updateQuantity()">Ok</button>
                 </div>
             </ng-template>
