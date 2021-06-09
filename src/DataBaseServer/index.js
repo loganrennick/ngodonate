@@ -70,6 +70,18 @@ app.get("/api/Users/:id", (req, res, next) => {
     })
 })
 
+/* AUTHENTICATION */
+
+app.get("/api/Users/authenticate/:username&:password", (req, res, next) => {
+    let username = req.params.username;
+    let password = req.params.password;
+    User.findOne({ userID: username, passWord: password }, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+
 /* DELETE ONE */
 
 app.delete("/api/Users/:id", (req, res, next) => {
@@ -97,7 +109,7 @@ app.post("/api/Users", (req, res, next) => {
 })
 
 
-/* UPDATE ONE EMPLOYEE */
+/* UPDATE ONE */
 
 app.put("/api/Users/:id", (req, res, next) => {
     let id = req.params.id;

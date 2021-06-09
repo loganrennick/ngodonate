@@ -12,7 +12,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public dbUserService: UsersService, public dbLoginService: LoginService,public popDlg:BsModalService) { }
+  constructor(public router: Router, public dbUserService: UsersService, public auth: LoginService, public popDlg: BsModalService) { }
 
   public loginModel = new LoginToPost();
   public users: any;
@@ -22,60 +22,30 @@ export class LoginComponent implements OnInit {
   public modalRef: any;
 
   ngOnInit(): void {
-    this.dbLoginService.getLoginUsers().subscribe(
-      (data) => {
-        this.users = data; console.log(this.users);
-        this.users.forEach((element: { _id: any; }) => {
-          this.dbLoginService.deleteLoginUser(element._id).subscribe();
-        });
-      },
-      (error) => { this.errorMsg = error },
-      () => console.log("completed")
-    );
   }
 
-  onFormSubmit(loginForm: any,template:TemplateRef<any>) {
-
-   
-
-    console.log(this.loginModel);
-    this.dbUserService.getUsers().subscribe(
+  onFormSubmit(loginForm: any, template: TemplateRef<any>) {
+    this.auth.authUser(this.loginModel.userID, this.loginModel.passWord).subscribe(
       (data) => {
-        this.users = data;
-        this.users.forEach((element: { userID: any; passWord: any; userRole: any }) => {
-          if (element.userID === this.loginModel.userID && element.passWord === this.loginModel.passWord) {
-            this.validUser = true;
-            this.loginModel.userRole = element.userRole; // role from user registration component
-            this.dbLoginService.postIntoLogin(this.loginModel).subscribe(
-              (data) => {
-                this.templog = data; console.log(this.templog);
-              },
-              (error) => this.errorMsg = error
-            );
-            console.log(this.validUser);
-            this.router.navigate(['/user-management/']);
-            return;
-          }
-        });
+        console.log(data);
+        if (data != null) {
+          this.auth.loginUser(this.loginModel.userID);
+          this.router.navigate(['/user-management/']);
+        }
+        else {
+          this.modalRef = this.popDlg.show(template);
+        }
       },
-      (error) => { this.errorMsg = error },
-      () => console.log("completed")
-    );
-    if (this.validUser == false) {
-
-      console.log("Not valid user");
-      this.modalRef=this.popDlg.show(template);
-      this.validUser = true;
-    }
+      (error) => { this.errorMsg = error }
+    )
   }
+
 
   OnClickRegister() {
-    console.log("Register Button");
     this.router.navigate(['register']);
   }
 
-  OkButton()
-  {
+  OkButton() {
     this.modalRef.hide();
   }
 

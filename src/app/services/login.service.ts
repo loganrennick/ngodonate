@@ -1,30 +1,47 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Login, LoginToPost } from 'src/models/login';
+import { RegistrationModel } from 'src/models/registration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  @Output() getLoggedUser: EventEmitter<any> = new EventEmitter();
+  private isLoggedIn: boolean;
+  private userName: string | undefined;
 
-  private _url: string = "http://localhost:3000/api/logins";
-  constructor(private http: HttpClient) { }
+  private _url: string = "http://localhost:3000/api/Users";
+  constructor(private http: HttpClient) {
+    this.isLoggedIn = false;
+  }
 
-  postIntoLogin(record: any): Observable<LoginToPost[]> {
+  getUsername() {
+    return this.userName;
+  }
 
-    return this.http.post<LoginToPost[]>(this._url, record)
+  isUserLoggedIn() {
+    return this.isLoggedIn;
+  }
+
+  authUser(username: string, password: string) {
+    return this.http.get<RegistrationModel[]>(this._url + '/authenticate/' + username + '&' + password)
       .pipe(catchError(this.errorhandler));
   }
-  getLoginUsers(): Observable<Login[]> {
-    return this.http.get<Login[]>(this._url)
-      .pipe(catchError(this.errorhandler));
+
+  loginUser(username: string) {
+    this.isLoggedIn = true;
+    this.userName = username;
+    this.getLoggedUser.emit(this.userName);
   }
 
-  deleteLoginUser(id: any) {
-    return this.http.delete(this._url + '/' + id);
+  logoutUser(): void {
+    this.isLoggedIn = false;
+    this.userName = "";
+    this.getLoggedUser.emit(this.userName);
   }
+
   errorhandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server error");
   }
