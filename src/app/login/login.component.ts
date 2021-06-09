@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login, LoginToPost } from 'src/models/login';
 import { LoginService } from '../services/login.service';
 import { UsersService } from '../services/users.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,14 @@ import { UsersService } from '../services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public dbUserService: UsersService, public dbLoginService: LoginService) { }
+  constructor(public router: Router, public dbUserService: UsersService, public dbLoginService: LoginService,public popDlg:BsModalService) { }
 
   public loginModel = new LoginToPost();
   public users: any;
   public templog: any;
   public errorMsg: any;
   public validUser: boolean = false;
+  public modalRef: any;
 
   ngOnInit(): void {
     this.dbLoginService.getLoginUsers().subscribe(
@@ -32,7 +34,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onFormSubmit(loginForm: any) {
+  onFormSubmit(loginForm: any,template:TemplateRef<any>) {
+
+   
+
     console.log(this.loginModel);
     this.dbUserService.getUsers().subscribe(
       (data) => {
@@ -57,7 +62,10 @@ export class LoginComponent implements OnInit {
       () => console.log("completed")
     );
     if (this.validUser == false) {
+
       console.log("Not valid user");
+      this.modalRef=this.popDlg.show(template);
+      this.validUser = true;
     }
   }
 
@@ -66,5 +74,12 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
+  OkButton()
+  {
+    this.modalRef.hide();
+  }
+
 
 }
+
+

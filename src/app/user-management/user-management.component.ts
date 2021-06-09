@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RegistrationModel } from 'src/models/registration';
 import { LoginService } from '../services/login.service';
 import { UsersService } from '../services/users.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-user-management',
@@ -11,12 +14,14 @@ import { UsersService } from '../services/users.service';
 })
 export class UserManagementComponent implements OnInit {
 
-  constructor(public dbUserService:UsersService,public dbLoginService:LoginService,private router: Router) { }
+  constructor(public dbUserService:UsersService,public dbLoginService:LoginService,private router: Router,public popDlg:BsModalService) { }
 
   public users:any;
   public loginUser:any;
   public errorMsg:any ;
+  public userToDel:any;
   // public curUserRole:any;
+  public modalRef: any;
 
   ngOnInit(): void {
 
@@ -58,16 +63,42 @@ export class UserManagementComponent implements OnInit {
     this.router.navigate(['/user-edit']);
   }
 
-  deleteUser(user:any){
+  deleteUserDlg(user:any,template:TemplateRef<any>){
 
-    console.log("inside delete");
-      this.dbUserService.deleteUser(user._id).subscribe(() => {
+    this.userToDel=user;
+
+    this.modalRef=this.popDlg.show(template);
+
+    // let dialogRef=this.dialog.open(PopDialogDeleteComponent,
+    //   {
+    //   height: '400px',
+    //   width: '600px',
+    // });
+    // console.log("inside delete");
+    //   this.dbUserService.deleteUser(user._id).subscribe(() => {
+    //   this.dbUserService.getUsers().subscribe(
+    //     (data) => {this.users = data;console.log(data);},
+    //     (error) => this.errorMsg = error
+    //   )      
+    // });
+  }
+  deleteUser()
+  {
+       this.modalRef.hide();
+      console.log("inside delete");
+      this.dbUserService.deleteUser(this.userToDel._id).subscribe(() => {
       this.dbUserService.getUsers().subscribe(
         (data) => {this.users = data;console.log(data);},
         (error) => this.errorMsg = error
       )      
     });
   }
+
+  CanceldeleteUser()
+  {
+    this.modalRef.hide();
+  }
+
   editUser(user:any)
   {
 

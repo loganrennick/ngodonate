@@ -34,7 +34,7 @@
                             <button type="button" class="btn btn-primary mr-2 py-0 w-25"
                                 (click)="editUser(user)">Edit</button>
                             <button type="button" class="btn btn-danger mr-2 py-0 w-25"
-                                (click)="deleteUser(user)">Delete</button>
+                                (click)="deleteUserDlg(user,DeleteUser)">Delete</button>
                         </div>
                     </td>
                     <!-- </ng-template> -->
@@ -42,4 +42,20 @@
             </tbody>
         </table>
     </div>
+    <ng-template #DeleteUser>
+        <div class="modal-header">
+            <h5 class="modal-title pull-left">Delete</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body d-flex">
+            <label>Are you sure, You want to delete the record?</label>
+        </div>
+        <div class="modal-footer d-flex">
+               <button style="text-align: center;" class="btn btn-primary" (click)="deleteUser()">Delete</button>
+               <button style="text-align: center;" class="btn btn-primary" (click)="CanceldeleteUser()">Cancel</button>
+        </div>
+                   
+    </ng-template>
 </div>
