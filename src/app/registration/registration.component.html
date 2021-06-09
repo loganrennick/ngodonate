@@ -44,6 +44,16 @@
                             <div class="alert alert-danger" *ngIf="userID.errors.required">User Name is required</div>
                         </div>
                     </div>
+                    <div *ngFor="let user of users">
+                        <div *ngIf="(regModel.userID == user.userID) && userID.touched">
+                            <div class="alert alert-danger">User Name already exist choose different one</div>
+                                                       
+                        </div>
+                    </div>
+                  
+
+
+
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Password</label>
@@ -65,7 +75,8 @@
                         </div>
                     </div>
                     <div *ngIf="cnfPassWord.touched && (regModel.cnfPassWord != regModel.passWord)">
-                        <div class="alert alert-danger">Passwords are not macthcing</div>
+                        
+                        <div cnfPassWord.invalid=true class="alert alert-danger">Passwords are not macthcing</div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -82,7 +93,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <button type="submit" [disabled]="RegistrationForm.form.invalid" class="btn btn-primary mr-5 float-center">Save</button>
+                    <button type="submit" [disabled]="RegistrationForm.form.invalid || isDataValid" class="btn btn-primary mr-5 float-center">Save</button>
                
                     <button (click)="OnClickCancel()" class="btn btn-primary mr-5 float-right">Cancel</button>
                 </div>

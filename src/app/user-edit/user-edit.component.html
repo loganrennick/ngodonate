@@ -59,7 +59,7 @@
                     <label class="col-sm-2 col-form-label">Confirm Password</label>
                     <div class="col-sm-10">
                         <input type='password' #cnfPassWord = "ngModel" required name="cnfPassWord" class="form-control"
-                        [class.is-invalid]="cnfPassWord.invalid && cnfPassWord.touched"  [(ngModel)]="user.cnfPassWord">
+                        [class.is-invalid]="cnfPassWord.invalid && cnfPassWord.touched" [(ngModel)]="user.cnfPassWord">
                         <div *ngIf="cnfPassWord.touched && cnfPassWord.errors">
                             <div class="alert alert-danger" *ngIf="cnfPassWord.errors.required">Confirmation of Password is required</div>
                         </div>

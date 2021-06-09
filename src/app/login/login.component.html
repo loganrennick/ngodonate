@@ -1,6 +1,6 @@
 
 <div>
-    <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm,InvalidUser)">
 
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">User Name</label>
@@ -31,6 +31,23 @@
 
      
     </form>
+
+
+    <ng-template #InvalidUser>
+        <div class="modal-header">
+            <h5 class="modal-title pull-left">Login</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body d-flex">
+            <label>Wrong User Name or Password, Please try again...</label>
+        </div>
+        <div class="modal-footer d-flex">
+               <button style="text-align: center;" class="btn btn-primary" (click)="OkButton()">Ok</button>
+        </div>
+                   
+    </ng-template>
     <!-- <div>
         
         <div class="form-group" style="text-align: center;">

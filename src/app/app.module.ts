@@ -19,6 +19,9 @@ import { GiftsComponent } from './gifts/gifts.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,18 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     GiftsComponent,
     ShoppingCartComponent,
     ThankYouComponent
+   
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [UsersService, LoginService],
   bootstrap: [AppComponent]
