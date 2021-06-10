@@ -11,6 +11,7 @@ export class DonateService {
   private _url: string = "http://localhost:3000/api/Donate";
   private personalInfoId: string = "";
   private gifts: Gift[] = [];
+  private donationName = "";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +19,12 @@ export class DonateService {
     this.personalInfoId = id;
   }
 
+  public storeDonationType(type: string) {
+    this.donationName = type;
+  }
+
   public storeGift(gift: Gift) {
+    gift.donationName = this.donationName;
     this.gifts.push(gift);
   }
 }
