@@ -1,5 +1,4 @@
 export class PersonalInfo {
-    //public id: number = 0;
     public firstName: string = "";
     public lastName: string = "";
     public phoneNum: number = 0;
@@ -7,10 +6,8 @@ export class PersonalInfo {
     public address: string = "";
     public city: string = "";
     public state: string = "";
-    public zip: number = 0;
     public country: string = "";
-    public donationAmout: number =0;
-    public isMothlyRecurring:boolean=false;
-
+    public zip: number = 0;
+    public userID: string = "";
 }
 

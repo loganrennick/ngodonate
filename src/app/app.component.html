@@ -6,11 +6,13 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div *ngIf="auth.isUserLoggedIn()" class="col-2">
+      <!-- <div class="col-2"> -->
       <div class="d-flex align-items-stretch">
         <nav class="navbar navbar-dark bg-dark p-3 ml-3 w-100">
           <div class="container-fluid">
             <ul class="navbar-nav d-flex flex-column">
-              <p style="color:white; margin-top: 1rem;"><i class="bi bi-person-fill"></i> {{auth.getUsername()}}</p>
+              <p class="profile" style="color:white; margin-top: 1rem;"><i class="bi bi-person-fill"></i>
+                {{auth.getUsername()}}</p>
               <li class="nav-item py-2">
                 <a class="nav-link" routerLink="/user-management" routerLinkActive="active">User Management</a>
               </li>

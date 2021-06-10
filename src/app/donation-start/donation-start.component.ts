@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DonationType } from 'src/models/donation-type';
+import { DonateService } from '../services/donate.service';
 import { DonationTypeService } from '../services/donation-type.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { DonationTypeService } from '../services/donation-type.service';
 })
 export class DonationStartComponent implements OnInit {
 
-  constructor(public router: Router, private ngoService: DonationTypeService) { }
+  constructor(public router: Router, private ngoService: DonationTypeService, private donateService: DonateService) { }
 
   public groups: any;
   errorMsg: any;
@@ -25,7 +26,8 @@ export class DonationStartComponent implements OnInit {
     )
   }
 
-  onClick() {
+  onClick(type: string) {
+    this.donateService.storeDonationType(type);
     this.router.navigate(['/personal-information/']);
   }
 

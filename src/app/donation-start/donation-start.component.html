@@ -6,7 +6,8 @@
         </div>
         <div class="card-deck">
             <div class="d-flex flex-wrap" *ngFor="let group of groups; index as i">
-                <button type="button" class="btn btn-outline-dark m-3" (click)="onClick()">{{group.Name}}</button>
+                <button type="button" class="btn btn-outline-dark m-3"
+                    (click)="onClick(group.Name)">{{group.Name}}</button>
             </div>
         </div>
     </div>

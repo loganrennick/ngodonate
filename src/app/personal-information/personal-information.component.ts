@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersonalInfo } from 'src/models/personal-info';
-import { PerDonationprocessService } from '../services/per-donationprocess.service';
+import { DonateService } from '../services/donate.service';
+import { LoginService } from '../services/login.service';
+import { PersonalInformationService } from '../services/personal-information.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -10,10 +12,33 @@ import { PerDonationprocessService } from '../services/per-donationprocess.servi
 })
 export class PersonalInformationComponent implements OnInit {
 
-  public pInfoModel=new PersonalInfo();
-  constructor(private router: Router,public dbPerDonService:PerDonationprocessService) { }
+  public data: any;
+  public model: any;
+  public pInfoModel = new PersonalInfo();
+  public user: any;
+  public errorMsg: any;
+  public shouldPost: boolean = true;
+
+  constructor(private router: Router, public donateService: DonateService, public infoService: PersonalInformationService, public auth: LoginService) { }
 
   ngOnInit(): void {
+    if (this.auth.isUserLoggedIn()) {
+      this.user = this.auth.getUsername();
+      console.log(this.user);
+      this.infoService.getPersonalInfo(this.user).subscribe(
+        (data) => {
+          if (data != null) {
+            console.log(data);
+            this.model = data;
+            this.pInfoModel = this.model;
+            this.shouldPost = false;
+          }
+        },
+        (error) => {
+          this.errorMsg = error;
+        }
+      )
+    }
   }
 
   cancel() {
@@ -21,11 +46,34 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   continue() {
-    console.log(this.pInfoModel);
-    this.dbPerDonService.StorePersonalDetails(this.pInfoModel);
-    this.router.navigate(['/gifts/']);
-  }
+    this.pInfoModel.userID = this.user;
+    this.donateService.storePersonalDetails(this.model._id);
 
- 
+    if (this.shouldPost) {
+      console.log("should post")
+      this.infoService.postPersonalInfo(this.pInfoModel).subscribe(
+        (data) => {
+          this.data = data;
+          this.router.navigate(['/gifts/']);
+        },
+        (error) => {
+          this.errorMsg = error;
+        }
+      )
+    }
+
+    else {
+      console.log("should not post")
+      this.infoService.updatePersonalInfo(this.model._id, this.pInfoModel).subscribe(
+        (data) => {
+          this.data = data;
+          this.router.navigate(['/gifts/']);
+        },
+        (error) => {
+          this.errorMsg = error;
+        }
+      )
+    }
+  }
 
 }
