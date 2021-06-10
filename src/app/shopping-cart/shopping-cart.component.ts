@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,9 +9,24 @@ import { Router } from '@angular/router';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalService: BsModalService) { }
+
+  modalRef: any;
+  quantity: any = 1;
 
   ngOnInit(): void {
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm ' });
+  }
+
+  updateQuantity() {
+    this.modalRef.hide();
+  }
+
+  addDonation() {
+    this.router.navigate(['/donation-start/']);
   }
 
   cancel() {

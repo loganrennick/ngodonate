@@ -10,15 +10,15 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class DonationTypeManagementComponent implements OnInit {
 
-  public groups: any;
-  public edit: boolean[] = [];
-  public editing: boolean = false;
-  public userInput: string = "";
-  public isPopupVisible: boolean = false;
+  public groups: any; // DonationType[]
+  public edit: boolean[] = []; // status of each donation type - are they being edited?
+  public editing: boolean = false; // is a donation type being edited
   groupModel = new DonationType();
-  group: any;
+  group: any; // DonationType
   errorMsg: any;
   modalRef: any;
+  modalRef2: any;
+  currID: any;
 
   constructor(private ngoService: DonationTypeService, private modalService: BsModalService) { }
 
@@ -36,7 +36,11 @@ export class DonationTypeManagementComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, { id: 1, class: 'first' });
+  }
+
+  openModal2(template: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(template, { id: 2, class: 'second' });
   }
 
   addGroup() {
@@ -57,37 +61,37 @@ export class DonationTypeManagementComponent implements OnInit {
     )
   }
 
+  deleteDialog(id: any, template: TemplateRef<any>) {
+    console.log(id);
+    console.log(template);
+    this.openModal2(template);
+    this.currID = id;
+  }
+
+  closeDeleteDialog() {
+    this.currID = "";
+    this.modalRef2.hide();
+  }
+
   deleteGroup(id: any) {
-    if (confirm("Are you sure you want to delete this donation type?")) {
-      this.ngoService.deleteDonationType(id).subscribe(
-        (data) => {
-          this.group = data;
-          this.ngoService.getDonationTypes().subscribe(
-            (data) => {
-              this.groups = data;
-              this.edit = [];
-              for (let i = 0; i < this.groups.length; i++) {
-                this.edit.push(false);
-              }
-            },
-            (error) => this.errorMsg = error
-          )
-        },
-        (error) => this.errorMsg = error
-      )
-    }
+    this.ngoService.deleteDonationType(id).subscribe(
+      (data) => {
+        this.group = data;
+        this.ngoService.getDonationTypes().subscribe(
+          (data) => {
+            this.groups = data;
+            this.edit = [];
+            for (let i = 0; i < this.groups.length; i++) {
+              this.edit.push(false);
+            }
+            this.closeDeleteDialog();
+          },
+          (error) => this.errorMsg = error
+        )
+      },
+      (error) => this.errorMsg = error
+    )
   }
-
-
-  onClickSubmit(i: number, ngo: string) {
-    if (this.edit[i])
-      this.edit[i] = false;
-    else
-      this.edit[i] = true;
-    this.groups[i].Name = ngo;
-    this.editing = false;
-  }
-
 
   updateGroup(i: number, id: any) {
     if (this.edit[i])
@@ -110,7 +114,7 @@ export class DonationTypeManagementComponent implements OnInit {
     )
   }
 
-  onClick(i: number, name: string) {
+  startEdit(i: number, name: string) {
     if (this.edit[i])
       this.edit[i] = false;
     else
@@ -118,6 +122,5 @@ export class DonationTypeManagementComponent implements OnInit {
     this.groupModel.Name = name;
     this.editing = true;
   }
-
 
 }

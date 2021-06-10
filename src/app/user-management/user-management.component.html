@@ -32,9 +32,9 @@
                     <ng-template #AdminUser> -->
                     <td class="text-center d-flex justify-content-between">
                         <div class="w-100">
-                            <button type="button" class="btn btn-primary mr-2 py-0 w-25"
-                                (click)="editUser(user)">Edit</button>
-                            <button type="button" class="btn btn-danger mr-2 py-0 w-25"
+                            <button type="button" class="btn btn-primary mr-2 py-0" (click)="editUser(user)"
+                                style="width: 75px;">Edit</button>
+                            <button type="button" class="btn btn-danger mr-2 py-0" style="width: 75px;"
                                 (click)="deleteUserDlg(user,DeleteUser)">Delete</button>
                         </div>
                     </td>
@@ -54,9 +54,9 @@
             <label>Are you sure, You want to delete the record?</label>
         </div>
         <div class="modal-footer d-flex">
-               <button style="text-align: center;" class="btn btn-primary" (click)="deleteUser()">Delete</button>
-               <button style="text-align: center;" class="btn btn-primary" (click)="CanceldeleteUser()">Cancel</button>
+            <button style="text-align: center;" class="btn btn-primary" (click)="deleteUser()">Delete</button>
+            <button style="text-align: center;" class="btn btn-primary" (click)="CanceldeleteUser()">Cancel</button>
         </div>
-                   
+
     </ng-template>
 </div>

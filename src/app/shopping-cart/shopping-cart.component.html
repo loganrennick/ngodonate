@@ -1,11 +1,77 @@
 <div class="p-3 border mr-3">
     <div style="background-color: #343a40; color: white; border-radius: 15px;">
-        <div class="row pb-5">
+        <div class="row pb-4">
             <h2 class="pl-5 pt-5">Shopping Cart</h2>
         </div>
-        <div class="my-4 pb-5 row mr-4 d-flex flex-row-reverse">
-            <div class="btn btn-secondary btn-orange mr-2" (click)="continue()">Continue</div>
-            <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</div>
+        <hr>
+        <div class="row">
+            <div class="col-9 pr-0">
+                <div class="px-5">
+                    <h3 class="pb-3">Order Summary</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item Description</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>General Donation Fund</td>
+                                <td>
+                                    <div class="justify-content-between d-flex">
+                                        <div>{{quantity}}</div>
+                                        <button type="button" class="close pull-right edit"
+                                            (click)="openModal(template)">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>One-time Payment</td>
+                                <td>$100</td>
+                                <td>$100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-3 pl-0">
+                <div class="my-3 p-4 mr-3 " style="background-color: #44494e; border-radius: 10px;">
+                    <div class="row d-flex justify-content-center">
+                        {{quantity}} item in cart
+                    </div>
+                    <div class="row d-flex justify-content-center pb-3">
+                        <a class="close edit" style="text-decoration: underline; font-size:1.1rem;"
+                            (click)="addDonation()">Continue
+                            Shopping</a>
+                    </div>
+                    <hr>
+                    <div class="row d-flex justify-content-center">
+                        <h5>Grand Total - $1000</h5>
+                    </div>
+                    <hr>
+                    <div class="my-4 pt-5  row d-flex justify-content-center">
+                        <div class="btn btn-secondary btn-orange m-1" (click)="cancel()">Back</div>
+                        <div class="btn btn-secondary btn-orange m-1" (click)="continue()">Purchase</div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Edit Quantity</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <input type="number" min="0" class="form-control w-25 mr-3" [(ngModel)]="quantity" name="Quantity">
+                    <button type="button" class="btn btn-primary " (click)="updateQuantity()">Ok</button>
+                </div>
+            </ng-template>
         </div>
+
     </div>
 </div>

@@ -5,7 +5,6 @@
             <p>Please select the NGO you wish to donate to.</p>
         </div>
         <div class="card-deck">
-            <!-- @foreach (var service in Model) -->
             <div class="d-flex flex-wrap" *ngFor="let group of groups; index as i">
                 <button type="button" class="btn btn-outline-dark m-3" (click)="onClick()">{{group.Name}}</button>
             </div>
