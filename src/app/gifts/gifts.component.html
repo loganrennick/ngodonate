@@ -23,7 +23,7 @@
                     <div class="mt-5 row mr-3">
                         <input type='text' #donationAmout="ngModel" required pattern="^[0-9]+$" name="donationAmout"
                             class="form-control" [class.is-invalid]="donationAmout.invalid && donationAmout.touched"
-                            [(ngModel)]="pInfoModel">
+                            [(ngModel)]="pInfoModel.price">
                     </div>
                     <div *ngIf="donationAmout.touched && donationAmout.errors" class="mt-2 row mr-3">
                         <div class="alert alert-danger mb-0 w-100" *ngIf="donationAmout.errors.required">Donation Amount
@@ -36,7 +36,7 @@
                     </div>
                     <div class="mt-3 row ml-1">
                         <input type='checkbox' name="isMothlyRecurring" class="form-check-input mt-2"
-                            [(ngModel)]="pInfoModel">
+                            [(ngModel)]="pInfoModel.monthly">
                         <p class=" ml-1 mt-1 mr-3">Check if you want to pay in the form of a monthly subscription.
                         </p>
                     </div>

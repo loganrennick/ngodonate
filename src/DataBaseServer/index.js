@@ -57,10 +57,17 @@ const PersonalInfoSchema = new mongoose.Schema({
     userID: String
 })
 
+
+const DonationSchema = new mongoose.Schema({
+    personalInfoId: String,
+    gifts: []
+})
+
 User = mongoose.model('User', UserSchema);
 Login = mongoose.model('Login', LoginSchema);
 DonationType = mongoose.model('DonationType', DonationTypeSchema);
 PersonalInfo = mongoose.model('PersonalInfo', PersonalInfoSchema);
+Donation = mongoose.model('Donation', DonationSchema);
 
 ///Users
 
@@ -233,7 +240,7 @@ app.put("/api/DonationTypes/:id", (req, res, next) => {
     })
 })
 
-/* PERSONAL INFO */
+///Personal Info
 
 /* ADD ONE */
 
@@ -258,11 +265,20 @@ app.delete("/api/PersonalInfo/:id", (req, res, next) => {
     })
 })
 
-/* GET ONE */
+/* GET ONE BY USERID */
 
 app.get("/api/PersonalInfo/User/:userid", (req, res, next) => {
     let userid = req.params.userid;
     PersonalInfo.findOne({ userID: userid }, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+/* GET ONE BY PERSONALINFO ID */
+app.get("/api/PersonalInfo/:id", (req, res, next) => {
+    let id = req.params.id;
+    PersonalInfo.findById(id, (err, object) => {
         if (err) return next(err)
         res.json(object);
     })
@@ -291,3 +307,26 @@ app.put("/api/PersonalInfo/:id", (req, res, next) => {
     })
 })
 
+///Donation
+
+/* ADD ONE */
+
+app.post("/api/Donation", (req, res, next) => {
+    let create_object;
+    if (req.body !== undefined) {
+        create_object = req.body;
+    }
+    Donation.create(create_object, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+/* GET ALL */
+
+app.get("/api/Donation", (req, res, next) => {
+    Donation.find((err, data) => {
+        if (err) return next(err)
+        res.json(data);
+    })
+})
