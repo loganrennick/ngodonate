@@ -34,7 +34,6 @@ const UserSchema = new mongoose.Schema({
     cnfPassWord: String
 })
 
-
 const LoginSchema = new mongoose.Schema({
     userID: String,
     passWord: String,
@@ -45,9 +44,23 @@ const DonationTypeSchema = new mongoose.Schema({
     Name: String
 })
 
+const PersonalInfoSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+    phoneNum: Number,
+    eMail: String,
+    address: String,
+    city: String,
+    state: String,
+    country: String,
+    zip: Number,
+    userID: String
+})
+
 User = mongoose.model('User', UserSchema);
 Login = mongoose.model('Login', LoginSchema);
 DonationType = mongoose.model('DonationType', DonationTypeSchema);
+PersonalInfo = mongoose.model('PersonalInfo', PersonalInfoSchema);
 
 ///Users
 
@@ -105,7 +118,6 @@ app.post("/api/Users", (req, res, next) => {
         if (err) return next(err)
         res.json(object);
     })
-
 })
 
 
@@ -121,7 +133,6 @@ app.put("/api/Users/:id", (req, res, next) => {
         if (err) return next(err)
         res.json(object);
     })
-
 })
 
 ///Logins
@@ -220,5 +231,63 @@ app.put("/api/DonationTypes/:id", (req, res, next) => {
         if (err) return next(err)
         res.json(object);
     })
-
 })
+
+/* PERSONAL INFO */
+
+/* ADD ONE */
+
+app.post("/api/PersonalInfo", (req, res, next) => {
+    let create_object;
+    if (req.body !== undefined) {
+        create_object = req.body;
+    }
+    PersonalInfo.create(create_object, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+/* DELETE ONE */
+
+app.delete("/api/PersonalInfo/:id", (req, res, next) => {
+    let id = req.params.id;
+    PersonalInfo.findByIdAndRemove(id, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+/* GET ONE */
+
+app.get("/api/PersonalInfo/User/:userid", (req, res, next) => {
+    let userid = req.params.userid;
+    PersonalInfo.findOne({ userID: userid }, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+
+/* GET ALL */
+
+app.get("/api/PersonalInfo", (req, res, next) => {
+    PersonalInfo.find((err, data) => {
+        if (err) return next(err)
+        res.json(data);
+    })
+})
+
+/* UPDATE ONE */
+
+app.put("/api/PersonalInfo/:id", (req, res, next) => {
+    let id = req.params.id;
+    let updated_object;
+    if (req.body !== undefined) {
+        updated_object = req.body;
+    }
+    PersonalInfo.findByIdAndUpdate(id, updated_object, (err, object) => {
+        if (err) return next(err)
+        res.json(object);
+    })
+})
+

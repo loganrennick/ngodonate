@@ -10,7 +10,7 @@ import { RegistrationModel } from 'src/models/registration';
 export class LoginService {
   @Output() getLoggedUser: EventEmitter<any> = new EventEmitter();
   private isLoggedIn: boolean;
-  private userName: string | undefined;
+  private userName: any;
 
   private _url: string = "http://localhost:3000/api/Users";
   constructor(private http: HttpClient) {

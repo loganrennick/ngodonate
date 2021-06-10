@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Gift } from 'src/models/gift';
 import { PersonalInfo } from 'src/models/personal-info';
+import { DonateService } from '../services/donate.service';
 import { PerDonationprocessService } from '../services/per-donationprocess.service';
 
 @Component({
@@ -10,8 +12,8 @@ import { PerDonationprocessService } from '../services/per-donationprocess.servi
 })
 export class GiftsComponent implements OnInit {
 
-  public pInfoModel=new PersonalInfo();
-  constructor(private router: Router,public dbPerDonService:PerDonationprocessService) { }
+  public pInfoModel = new Gift();
+  constructor(private router: Router, public donateService: DonateService) { }
 
 
   ngOnInit(): void {
@@ -23,10 +25,10 @@ export class GiftsComponent implements OnInit {
 
   continue() {
     console.log(this.pInfoModel);
-    this.dbPerDonService.StoreDonationAmount(this.pInfoModel);
+    this.donateService.storeGift(this.pInfoModel);
     this.router.navigate(['/shopping-cart/']);
   }
 
- 
+
 
 }
