@@ -12,4 +12,10 @@ export class AppComponent {
   constructor(public auth: LoginService) {
   }
 
+  OnLogout()
+  {
+    console.log("logout");
+    this.auth.logoutUser();
+  }
+  
 }

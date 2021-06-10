@@ -30,7 +30,19 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (data != null) {
           this.auth.loginUser(this.loginModel.userID);
-          this.router.navigate(['/user-management/']);
+          if(data.userRole==="Admin")
+           {
+            this.auth.isAdmin=true;
+            this.router.navigate(['/user-management/']);
+            
+           }
+          else
+           {
+            this.auth.isAdmin=false;
+            this.router.navigate(['/donation-start/']);
+            
+          }
+          
         }
         else {
           this.modalRef = this.popDlg.show(template);
