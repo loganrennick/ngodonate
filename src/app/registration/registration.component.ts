@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   user:any;
   users: any;
   errorMsg: any;
-  isDataValid:any = false;
+  isDataValid:any = true;
 
   ngOnInit(): void {
 

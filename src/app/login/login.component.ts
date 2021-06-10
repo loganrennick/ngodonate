@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public users: any;
   public templog: any;
   public errorMsg: any;
-  public validUser: boolean = false;
+  public validUser: any;
   public modalRef: any;
 
   ngOnInit(): void {
@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
   OkButton() {
     this.modalRef.hide();
   }
-
 
 }
 
