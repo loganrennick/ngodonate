@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public users: any;
   public templog: any;
   public errorMsg: any;
-  public validUser: boolean = false;
+  public validUser: any;
   public modalRef: any;
 
   ngOnInit(): void {
@@ -32,19 +32,22 @@ export class LoginComponent implements OnInit {
       (error) => { this.errorMsg = error },
       () => console.log("completed")
     );
+    this.validUser = false;
   }
 
   onFormSubmit(loginForm: any,template:TemplateRef<any>) {
-
    
 
     console.log(this.loginModel);
+    //this.validUser = false;
     this.dbUserService.getUsers().subscribe(
       (data) => {
         this.users = data;
         this.users.forEach((element: { userID: any; passWord: any; userRole: any }) => {
           if (element.userID === this.loginModel.userID && element.passWord === this.loginModel.passWord) {
             this.validUser = true;
+            
+            console.log(this.validUser);
             this.loginModel.userRole = element.userRole; // role from user registration component
             this.dbLoginService.postIntoLogin(this.loginModel).subscribe(
               (data) => {
@@ -52,21 +55,24 @@ export class LoginComponent implements OnInit {
               },
               (error) => this.errorMsg = error
             );
-            console.log(this.validUser);
-            this.router.navigate(['/user-management/']);
+             console.log(this.validUser);
+             this.router.navigate(['/user-management/']);
             return;
           }
         });
       },
       (error) => { this.errorMsg = error },
-      () => console.log("completed")
-    );
-    if (this.validUser == false) {
-
-      console.log("Not valid user");
-      this.modalRef=this.popDlg.show(template);
-      this.validUser = true;
+      () => {console.log("completed in login page"),console.log(this.validUser);
+      if (this.validUser == false) {
+        console.log("Not valid user");
+        this.modalRef=this.popDlg.show(template);
+        
+      }
+        
     }
+      
+    );
+    
   }
 
   OnClickRegister() {
@@ -78,7 +84,6 @@ export class LoginComponent implements OnInit {
   {
     this.modalRef.hide();
   }
-
 
 }
 

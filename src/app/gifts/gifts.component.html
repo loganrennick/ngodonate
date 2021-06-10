@@ -1,4 +1,4 @@
-<div class="p-3 border mr-3">
+<!-- <div class="p-3 border mr-3">
     <div style="background-color: #343a40; color: white; border-radius: 15px;">
         <div class="row pl-5 pt-5">
             <p>How much would you like to contribute?</p>
@@ -35,4 +35,47 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<div class="p-3 border mr-3">
+    <div class="row justify-content-center py-5" style="background-color: #343a40; color: white; border-radius: 15px;">
+        <div class="row pl-5 pt-5">
+            <p>How much would you like to contribute?</p>
+        </div>
+        <div class="col-6">
+        <form #giftForm="ngForm">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Donation Amount</label>
+                <div class="col-sm-10">
+                    <input type='text' #donationAmout="ngModel" required pattern="^[0-9]+$" name="donationAmout"  class="form-control"
+                    [class.is-invalid]="donationAmout.invalid && donationAmout.touched" [(ngModel)]="pInfoModel.donationAmout">
+                    <div *ngIf="donationAmout.touched && donationAmout.errors">
+                        <div class="alert alert-danger" *ngIf="donationAmout.errors.required">Donation Amount is required</div>
+                        <div class="alert alert-danger" *ngIf="donationAmout.errors.pattern">Donation Amount must be Numbers</div>
+                     </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                
+                <label class=" form-check-label">Monthly Recurring</label>
+                <div class="col-sm-10">
+                    <input type='checkbox' name="isMothlyRecurring" class="form-check-input" [(ngModel)]="pInfoModel.isMothlyRecurring">
+                    <p class=" ml-1 mt-1 mr-3">Check if you want to pay in the form of a monthly subscription.
+                    </p>                
+            </div>
+            </div>
+            <div class="form-group row">
+            <div class="col-12">
+                <div class="mt-4 row mr-4 d-flex flex-row-reverse">
+                    <div class="btn btn-secondary btn-orange mr-2" (click)="continue()">Continue</div>
+                    <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</div>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    </div>
+    </div>
+
+ </div>    

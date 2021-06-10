@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonalInfo } from 'src/models/personal-info';
+import { PerDonationprocessService } from '../services/per-donationprocess.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class PersonalInformationComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public pInfoModel=new PersonalInfo();
+  constructor(private router: Router,public dbPerDonService:PerDonationprocessService) { }
 
   ngOnInit(): void {
   }
@@ -18,8 +21,11 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   continue() {
+    console.log(this.pInfoModel);
+    this.dbPerDonService.StorePersonalDetails(this.pInfoModel);
     this.router.navigate(['/gifts/']);
   }
 
+ 
 
 }
