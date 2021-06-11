@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background: #25292d;
+    /* background: linear-gradient(180deg, rgba(8,25,52,1) 15%, rgba(0,0,0,1) 100%); */
+    min-height:100%;
+}
+.modal-content {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+.modal-header {
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    background-color: #343a40 ;
+    color: white ;
+    border-bottom: 1px solid #343a40;
+}
+.modal-footer {
+    background-color: #464B4F ;
+    color: white ;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    border-top: 1px solid #343a40;
+}
+.modal-body {
+    background-color: #464B4F ;
+    color: white;
+}

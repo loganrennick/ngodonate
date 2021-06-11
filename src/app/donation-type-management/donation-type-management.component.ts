@@ -20,6 +20,7 @@ export class DonationTypeManagementComponent implements OnInit {
   modalRef2: any;
   currID: any;
 
+
   constructor(private ngoService: DonationTypeService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
@@ -36,11 +37,11 @@ export class DonationTypeManagementComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { id: 1, class: 'first' });
+    this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-custom' });
   }
 
   openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, { id: 2, class: 'second' });
+    this.modalRef2 = this.modalService.show(template, { id: 2, class: 'modal-custom' });
   }
 
   addGroup() {
