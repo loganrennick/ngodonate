@@ -16,6 +16,7 @@
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Total</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,9 @@
                                 <td *ngIf="gift.monthly">Recurring Monthly Payment</td>
                                 <td>{{gift.price | currency}}</td>
                                 <td>{{(gift.price * gift.quantity) | currency}}</td>
+                                <td><button type="button" class="close edit" (click)="openModal2(del, gift)">
+                                        <span>&times;</span>
+                                    </button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -74,6 +78,21 @@
                     <input type="number" min="0" class="form-control w-25 mr-3" [(ngModel)]="this.gift.quantity"
                         name="Quantity">
                     <button type="button" class="btn btn-primary " (click)="updateQuantity()">Ok</button>
+                </div>
+            </ng-template>
+            <ng-template #del>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Delete Donation Gift</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="closeDeleteDialog()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex">
+                    <label>Are you sure you want to delete?</label>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button class="btn btn-secondary" (click)="closeDeleteDialog()">Cancel</button>
+                    <button class="btn btn-primary" (click)="deleteGift()">Ok</button>
                 </div>
             </ng-template>
         </div>

@@ -11,59 +11,53 @@ import { PersonalInformationService } from '../services/personal-information.ser
 })
 export class DonationLogComponent implements OnInit {
 
-  public donations:any;
-  public errorMsg:any;
-  public person:any;
-  public name:any;
-  public donationLog:any[]=[];
+  public donations: any;
+  public errorMsg: any;
+  public person: any;
+  public name: any;
+  public donationLog: any[] = [];
 
-  
-  constructor(public dbDonationService:DonateService,public dbPersonalService:PersonalInformationService) { }
+
+  constructor(public dbDonationService: DonateService, public dbPersonalService: PersonalInformationService) { }
 
   ngOnInit(): void {
 
-     let tName:any;
-     let tAmount:any;
-     let tDonationType:any;
-     let tDate:any;
+    let tName: any;
+    let tAmount: any;
+    let tDonationType: any;
+    let tDate: any;
 
     this.dbDonationService.getDonations().subscribe(
-      (data) => {this.donations=data; console.log(this.donations);       
-
+      (data) => {
+        this.donations = data; console.log(this.donations);
         for (const iterator of this.donations) {
+          tDate = iterator.donationDate;
+          this.dbPersonalService.getPersonalInfoDonation(iterator.personalInfoId).subscribe(
+            (pdata) => {
+              this.person = pdata; console.log(pdata);
+              tName = pdata.firstName + " " + pdata.lastName;
+              for (const g of iterator.gifts) {
+                tAmount = g.price * g.quantity;
+                tDonationType = g.donationName;
 
-        // console.log(iterator.personalInfoId);
-        tDate=iterator.donationDate;
-         this.dbPersonalService.getPersonalInfoDonation(iterator.personalInfoId).subscribe(
-           (pdata) => {this.person=pdata; console.log(pdata);  
+                this.donationLog.push({ tName, tAmount, tDonationType, tDate });
+              }
 
-            //  console.log(pdata.firstName);
-            //  console.log(iterator.gifts);
-             tName = pdata.firstName + pdata.lastName;
+              console.log(this.donationLog);
 
-             for (const g of iterator.gifts)
-             {
-                // console.log(g.price)
-                 tAmount=g.price;
-                 tDonationType=g.donationName;
-                
-                  this.donationLog.push({tName,tAmount,tDonationType,tDate}); 
-             }              
+            }
+            ,
+            (error) => { this.errorMsg = error },
+            () => console.log("completed")
 
-             console.log(this.donationLog);           
-
-          }          
-          ,
-          (error)=>{this.errorMsg=error},
-           ()=>console.log("completed")
-        
-        );
+          );
         }
-     
-        },
-      (error)=>{this.errorMsg=error},
-      ()=>{         
-          console.log("completed")}
+
+      },
+      (error) => { this.errorMsg = error },
+      () => {
+        console.log("completed")
+      }
     );
   }
 }

@@ -15,6 +15,7 @@ export class ShoppingCartComponent implements OnInit {
 
   gifts: any;
   modalRef: any;
+  modalRef2: any;
   gift: any;
   data: any;
   errorMsg: any;
@@ -26,6 +27,26 @@ export class ShoppingCartComponent implements OnInit {
   openModal(template: TemplateRef<any>, gift: any) {
     this.gift = gift;
     this.modalRef = this.modalService.show(template, { class: 'modal-sm ' });
+  }
+
+  openModal2(template: TemplateRef<any>, gift: any) {
+    this.gift = gift;
+    this.modalRef2 = this.modalService.show(template, { id: 2, class: 'modal-custom' });
+  }
+
+  closeDeleteDialog() {
+    this.modalRef2.hide();
+  }
+
+  deleteGift() {
+    let newgifts: Gift[] = [];
+    for (let g of this.gifts) {
+      if (g !== this.gift) {
+        newgifts.push(g);
+      }
+    }
+    this.gifts = newgifts;
+    this.closeDeleteDialog();
   }
 
   updateQuantity() {

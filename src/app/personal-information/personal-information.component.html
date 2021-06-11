@@ -107,8 +107,9 @@
                         </div>
                     </div>
                     <div class="mt-5 row mr-3 d-flex flex-row-reverse">
-                        <div class="btn btn-secondary btn-orange" (click)="continue()">Continue</div>
-                        <div class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</div>
+                        <button class="btn btn-secondary btn-orange" (click)="continue()"
+                            [disabled]="PersonalInfoForm.form.invalid">Continue</button>
+                        <button class="btn btn-secondary btn-orange mr-2" (click)="cancel()">Cancel</button>
                     </div>
                 </form>
             </div>
