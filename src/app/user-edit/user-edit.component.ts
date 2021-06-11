@@ -39,15 +39,15 @@ export class UserEditComponent implements OnInit {
     console.log(this.user);
     console.log(this.user_Id);
     this.dbUserService.updateUser(this.user_Id, this.user).subscribe(
-       (data) => {this.user = data; console.log(data);},
+       (data) => {this.user = data; console.log(data);
+        this.user = this.dbUserService.getUsers().subscribe(
+          (data) => {this.user = data; console.log(data);},
+          (error) => {this.errorMsg = error; console.log(error);}
+        );},
        (error) => {this.errorMsg = error; console.log(error);}         
-     
-      
+           
     );
-    this.user = this.dbUserService.getUsers().subscribe(
-      (data) => {this.user = data; console.log(data);},
-      (error) => {this.errorMsg = error; console.log(error);}
-    );
+   
     
     this.router.navigate(['/user-management']);
   }

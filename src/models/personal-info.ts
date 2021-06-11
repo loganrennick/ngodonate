@@ -9,5 +9,7 @@ export class PersonalInfo {
     public country: string = "";
     public zip: number = 0;
     public userID: string = "";
+    public donationAmout :number=0;
+    public isMothlyRecurring:boolean=false;
 }
 

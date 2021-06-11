@@ -47,13 +47,14 @@ export class PersonalInformationComponent implements OnInit {
 
   continue() {
     this.pInfoModel.userID = this.user;
-    this.donateService.storePersonalDetails(this.model._id);
+    
 
     if (this.shouldPost) {
       console.log("should post")
       this.infoService.postPersonalInfo(this.pInfoModel).subscribe(
         (data) => {
           this.data = data;
+          this.donateService.storePersonalDetails(this.data._id);
           this.router.navigate(['/gifts/']);
         },
         (error) => {
@@ -64,9 +65,11 @@ export class PersonalInformationComponent implements OnInit {
 
     else {
       console.log("should not post")
+
       this.infoService.updatePersonalInfo(this.model._id, this.pInfoModel).subscribe(
         (data) => {
           this.data = data;
+          this.donateService.storePersonalDetails(this.model._id);
           this.router.navigate(['/gifts/']);
         },
         (error) => {
