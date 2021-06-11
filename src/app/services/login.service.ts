@@ -13,15 +13,15 @@ export class LoginService {
   @Output() getLoggedUser: EventEmitter<any> = new EventEmitter();
   private isLoggedIn: boolean;
   private userName: string | undefined;
-  public users:any;
-  public errorMsg:any;
-  public isAdmin:boolean;
+  public users: any;
+  public errorMsg: any;
+  public isAdmin: boolean;
 
 
   private _url: string = "http://localhost:3000/api/Users";
-  constructor(private http: HttpClient,private router: Router,public dbUserService:UsersService) {
+  constructor(private http: HttpClient, private router: Router, public dbUserService: UsersService) {
     this.isLoggedIn = false;
-    this.isAdmin=false;
+    this.isAdmin = false;
   }
 
   getUsername() {
@@ -48,18 +48,17 @@ export class LoginService {
     console.log("logout service");
     this.isLoggedIn = false;
     this.userName = "";
-    this.isAdmin=false;
+    this.isAdmin = false;
     this.getLoggedUser.emit(this.userName);
     this.router.navigate(['']);
-    
+
   }
 
   errorhandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server error");
   }
 
-  IsUserAdmin()
-  {
+  IsUserAdmin() {
     return this.isAdmin;
 
   }

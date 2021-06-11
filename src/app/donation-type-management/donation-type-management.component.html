@@ -1,67 +1,64 @@
-<div class="p-3 border mr-3">
-
-    <div class="d-flex justify-content-between p-4">
-        <h3 class="ml-2">Donation Groups</h3>
-        <div class="mr-2">
-            <div class="float-right btn btn-outline-dark" style="font-size: 1.1rem" (click)="openModal(template)"><i
-                    class="bi bi-plus-square mr-2"></i>
-                Add Donation Group
+<div class="p-3 mr-3">
+    <div class="p-4" style="background-color: #343a40; color:white; border-radius: 15px;">
+        <div class="d-flex justify-content-between">
+            <h3>Donation Groups</h3>
+            <div class="mr-2">
+                <div class="float-right btn btn-outline-light" style="font-size: 1.1rem" (click)="openModal(template)">
+                    <i class="bi bi-plus-square mr-2"></i>
+                    Add Donation Group
+                </div>
             </div>
         </div>
-    </div>
-
-    <ng-template #template>
-        <div class="modal-header">
-            <h4 class="modal-title pull-left">Add Donation Group</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body d-flex">
-            <input type="text" class="form-control" [(ngModel)]="groupModel.Name" name="Name"
-                placeholder="Enter donation group name">
-            <button type="button" class="btn btn-primary pull-right" (click)="addGroup()">Submit</button>
-        </div>
-    </ng-template>
-
-
-    <ng-template #del>
-        <div class="modal-header">
-            <h5 class="modal-title pull-left">Delete Donation Group</h5>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="closeDeleteDialog()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body d-flex">
-            <label>Are you sure you want to delete?</label>
-        </div>
-        <div class="modal-footer d-flex">
-            <button class="btn btn-secondary" (click)="closeDeleteDialog()">Cancel</button>
-            <button class="btn btn-primary" (click)="deleteGroup(currID)">Ok</button>
-        </div>
-    </ng-template>
-
-    <div class="card-deck">
-        <div class="col-3" *ngFor="let group of groups; index as i">
-            <div class="card m-3">
-                <div class="card-header">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <div class="text-center" *ngIf="!edit[i]">
-                            <h5>{{group.Name}}</h5>
-                        </div>
-                        <div>
-                            <input type='text' *ngIf="edit[i]" class="form-control" [(ngModel)]="groupModel.Name">
+        <ng-template #template>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Add Donation Group</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer d-flex">
+                <input type="text" class="form-control" [(ngModel)]="groupModel.Name" name="Name"
+                    placeholder="Enter donation group name">
+                <button type="button" class="btn btn-primary pull-right" (click)="addGroup()">Submit</button>
+            </div>
+        </ng-template>
+        <ng-template #del>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Delete Donation Group</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeDeleteDialog()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex">
+                <label>Are you sure you want to delete?</label>
+            </div>
+            <div class="modal-footer d-flex">
+                <button class="btn btn-secondary" (click)="closeDeleteDialog()">Cancel</button>
+                <button class="btn btn-primary" (click)="deleteGroup(currID)">Ok</button>
+            </div>
+        </ng-template>
+        <div class="card-deck">
+            <div class="col-3" *ngFor="let group of groups; index as i">
+                <div class="card m-3">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="text-center" *ngIf="!edit[i]">
+                                <h5>{{group.Name}}</h5>
+                            </div>
+                            <div>
+                                <input type='text' *ngIf="edit[i]" class="form-control" [(ngModel)]="groupModel.Name">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="!edit[i]"
-                            (click)="startEdit(i, group.Name)" [disabled]="editing">Edit</button>
-                        <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
-                            (click)="updateGroup(i, group._id)">Done</button>
-                        <button type="button" class="btn btn-danger btn-card" [disabled]="editing"
-                            (click)="deleteDialog(group._id, del)">Delete</button>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="!edit[i]"
+                                (click)="startEdit(i, group.Name)" [disabled]="editing">Edit</button>
+                            <button type="button" class="btn btn-primary mr-3 btn-card" *ngIf="edit[i]"
+                                (click)="updateGroup(i, group._id)">Done</button>
+                            <button type="button" class="btn btn-danger btn-card" [disabled]="editing"
+                                (click)="deleteDialog(group._id, del)">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

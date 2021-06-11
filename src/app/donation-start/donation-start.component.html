@@ -1,13 +1,14 @@
-<div class="p-3 border mr-3">
-    <div class="p-4">
+<div class="p-3 mr-3">
+    <div class="p-4" style="background-color: #343a40; color: white; border-radius: 15px;">
         <h3 class="pb-3">Ready to Donate?</h3>
         <div>
             <p>Please select the NGO you wish to donate to.</p>
         </div>
         <div class="card-deck">
             <div class="d-flex flex-wrap" *ngFor="let group of groups; index as i">
-                <button type="button" class="btn btn-outline-dark m-3"
+                <button type="button" class="btn btn-outline-light m-3"
                     (click)="onClick(group.Name)">{{group.Name}}</button>
             </div>
         </div>
     </div>
+</div>

@@ -1,8 +1,8 @@
-<div class="p-3 border mr-3">
+<div class="p-3 mr-3">
     <div class="p-4" style="background-color: #343a40; color: white; border-radius: 15px;">
-    <!-- <div class="p-4"> -->
+        <!-- <div class="p-4"> -->
         <h3 class="pb-3">User Management</h3>
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="background-color: #464B4F;">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -45,17 +45,17 @@
     </div>
     <ng-template #DeleteUser>
         <div class="modal-header">
-            <h5 class="modal-title pull-left">Delete</h5>
+            <h4 class="modal-title pull-left">Delete</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body d-flex">
-            <label>Are you sure, You want to delete the record?</label>
+            <label>Are you sure you want to delete this record?</label>
         </div>
         <div class="modal-footer d-flex">
-            <button style="text-align: center;" class="btn btn-primary" (click)="deleteUser()">Delete</button>
-            <button style="text-align: center;" class="btn btn-primary" (click)="CanceldeleteUser()">Cancel</button>
+            <button style="text-align: center;" class="btn btn-secondary" (click)="CanceldeleteUser()">Cancel</button>
+            <button style="text-align: center;" class="btn btn-primary" (click)="deleteUser()">Ok</button>
         </div>
 
     </ng-template>

@@ -4,6 +4,7 @@ import { Login, LoginToPost } from 'src/models/login';
 import { LoginService } from '../services/login.service';
 import { UsersService } from '../services/users.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public dbUserService: UsersService, public auth: LoginService, public popDlg: BsModalService) { }
+  constructor(public router: Router, public dbUserService: UsersService, public auth: LoginService, public popDlg: BsModalService, private cookieService: CookieService) { }
 
   public loginModel = new LoginToPost();
   public users: any;
@@ -30,19 +31,20 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (data != null) {
           this.auth.loginUser(this.loginModel.userID);
-          if(data.userRole==="Admin")
-           {
-            this.auth.isAdmin=true;
+          this.cookieService.set("user", this.loginModel.userID);
+          if (data.userRole === "Admin") {
+            this.auth.isAdmin = true;
+            this.cookieService.set("admin", "true")
             this.router.navigate(['/user-management/']);
-            
-           }
-          else
-           {
-            this.auth.isAdmin=false;
-            this.router.navigate(['/donation-start/']);
-            
+
           }
-          
+          else {
+            this.auth.isAdmin = false;
+            this.cookieService.set("admin", "false")
+            this.router.navigate(['/donation-start/']);
+
+          }
+
         }
         else {
           this.modalRef = this.popDlg.show(template);
