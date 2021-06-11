@@ -8,7 +8,7 @@
                     <th>Amount </th>
                     <th>Donation Type</th>
                     <th>Date</th>
-                                       
+
                 </tr>
             </thead>
             <tbody>
@@ -17,18 +17,16 @@
                         {{rec.tName}}
                     </td>
                     <td>
-                        {{rec.tAmount}}
+                        {{rec.tAmount | currency}}
                     </td>
                     <td>
                         {{rec.tDonationType}}
                     </td>
                     <td>
-                        {{rec.tDate}}
+                        {{rec.tDate | date}}
                     </td>
 
-            </tr>
-               
-               
-            <tbody>
+                </tr>
 
-      
+
+            <tbody>

@@ -41,19 +41,6 @@ export class UserEditComponent implements OnInit {
     console.log(this.user);
     console.log(this.user_Id);
     this.dbUserService.updateUser(this.user_Id, this.user).subscribe(
-<<<<<<< HEAD
-       (data) => {this.user = data; console.log(data);
-        this.user = this.dbUserService.getUsers().subscribe(
-          (data) => {this.user = data; console.log(data);},
-          (error) => {this.errorMsg = error; console.log(error);}
-        );},
-       (error) => {this.errorMsg = error; console.log(error);}         
-           
-    );
-   
-    
-    this.router.navigate(['/user-management']);
-=======
       (data) => {
         this.user = data; console.log(data);
         this.user = this.dbUserService.getUsers().subscribe(
@@ -71,7 +58,6 @@ export class UserEditComponent implements OnInit {
 
 
 
->>>>>>> d97ca7b69af30e20600b7cc2a2ad12577a2f2023
   }
   OnClickCancel() {
     this.router.navigate(['/user-management/']);
