@@ -60,6 +60,7 @@ export class ShoppingCartComponent implements OnInit {
     this.donateService.purchase(this.gifts).subscribe(
       (data) => {
         this.data = data;
+        this.donateService.clearGifts();
         this.router.navigate(['/thank-you/']);
       },
       (error) => {
