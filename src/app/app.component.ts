@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
       this.auth.loginUser(this.cookieService.get("user"));
       if (this.cookieService.get("admin") === "true") {
         this.auth.isAdmin = true;
-        this.router.navigate(['/user-management/']);
       }
     }
   }
