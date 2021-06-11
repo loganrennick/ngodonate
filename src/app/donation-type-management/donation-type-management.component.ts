@@ -2,6 +2,7 @@ import { DonationType } from '../../models/donation-type';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DonationTypeService } from '../services/donation-type.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-donation-type-management',
@@ -21,9 +22,11 @@ export class DonationTypeManagementComponent implements OnInit {
   currID: any;
 
 
-  constructor(private ngoService: DonationTypeService, private modalService: BsModalService) { }
+  constructor(private ngoService: DonationTypeService, private modalService: BsModalService, private auth: LoginService) { }
 
   ngOnInit(): void {
+    console.log(this.auth.isUserLoggedIn());
+    console.log(this.auth.isUserAdmin());
     this.ngoService.getDonationTypes().subscribe(
       (data) => {
         this.groups = data;

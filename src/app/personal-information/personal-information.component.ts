@@ -47,7 +47,10 @@ export class PersonalInformationComponent implements OnInit {
 
   continue() {
     this.pInfoModel.userID = this.user;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d97ca7b69af30e20600b7cc2a2ad12577a2f2023
     if (this.shouldPost) {
       console.log("should post")
       this.infoService.postPersonalInfo(this.pInfoModel).subscribe(

@@ -44,7 +44,7 @@ export class LoginService {
   }
 
   logoutUser(): void {
-    console.log(this.IsUserAdmin());
+    console.log(this.isUserAdmin());
     console.log("logout service");
     this.isLoggedIn = false;
     this.userName = "";
@@ -58,7 +58,7 @@ export class LoginService {
     return throwError(error.message || "Server error");
   }
 
-  IsUserAdmin() {
+  isUserAdmin() {
     return this.isAdmin;
 
   }

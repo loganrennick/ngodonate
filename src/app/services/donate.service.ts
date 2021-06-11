@@ -34,6 +34,10 @@ export class DonateService {
     return this.gifts;
   }
 
+  public clearGifts() {
+    this.gifts = [];
+  }
+
   public purchase(gifts: any): Observable<Donation[]> {
     let donation = new Donation();
     donation.gifts = gifts;
@@ -45,11 +49,10 @@ export class DonateService {
       .pipe(catchError(this.errorHandler));
   }
 
-  public getDonations():Observable<Donation[]>
-  {
+  public getDonations(): Observable<Donation[]> {
 
     return this.http.get<Donation[]>(this._url)
-    .pipe(catchError(this.errorHandler));
+      .pipe(catchError(this.errorHandler));
 
   }
   errorHandler(error: HttpErrorResponse) {
