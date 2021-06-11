@@ -14,40 +14,35 @@ export class RegistrationComponent implements OnInit {
 
   public regModel = new RegistrationModelToPost();
 
-  user:any;
+  user: any;
   users: any;
   errorMsg: any;
-  isDataValid:any = true;
+  isDataValid: any = true;
 
   ngOnInit(): void {
-
     this.users = this.dbUserService.getUsers().subscribe(
-      (data) => {this.users = data; console.log(data);},
-      (error) => {this.errorMsg = error; console.log(error);}
+      (data) => { this.users = data; console.log(data); },
+      (error) => { this.errorMsg = error; console.log(error); }
     );
   }
 
-  onFormSubmit(RegistrationForm:any)
-  {
-    
-    //this.regModel.userRole="User"; //setting the role as User
-
+  onFormSubmit(RegistrationForm: any) {
     this.dbUserService.postIntoUsers(this.regModel).subscribe(
-      (data) => {this.user = data;console.log(data);
-        },
-    (error) => this.errorMsg = error
+      (data) => {
+        this.user = data; console.log(data);
+        this.users = this.dbUserService.getUsers().subscribe(
+          (data) => {
+            this.users = data; console.log(data);
+            this.router.navigate(['/user-management/']);
+          },
+          (error) => { this.errorMsg = error; console.log(error); }
+        );
+      },
+      (error) => this.errorMsg = error
     );
-
-    this.users = this.dbUserService.getUsers().subscribe(
-      (data) => {this.users = data; console.log(data);},
-      (error) => {this.errorMsg = error; console.log(error);}
-    );
-
-  this.router.navigate(['/user-management/']);
-
   }
-  OnClickCancel()
-  {
+
+  OnClickCancel() {
     this.router.navigate(['/user-management/']);
   }
 

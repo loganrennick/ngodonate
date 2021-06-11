@@ -14,7 +14,7 @@ export class UserEditComponent implements OnInit {
   errorMsg: any;
   users: any;
 
-  constructor(private router: Router,private dbUserService:UsersService,private actRoute: ActivatedRoute) { }
+  constructor(private router: Router, private dbUserService: UsersService, private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -24,35 +24,42 @@ export class UserEditComponent implements OnInit {
       this.user_Id = id;
       console.log(this.user_Id);
       this.user = this.dbUserService.getUserById(this.user_Id).subscribe(
-        (data) => {this.user = data; //console.log(data);
+        (data) => {
+          this.user = data; //console.log(data);
         },
-        (error) => {this.errorMsg = error; //console.log(error);
-         }
+        (error) => {
+          this.errorMsg = error; //console.log(error);
+        }
       );
     });
 
 
   }
 
-  onFormSubmit(EditRegistrationForm:any) {
+  onFormSubmit(EditRegistrationForm: any) {
 
     console.log(this.user);
     console.log(this.user_Id);
     this.dbUserService.updateUser(this.user_Id, this.user).subscribe(
-       (data) => {this.user = data; console.log(data);},
-       (error) => {this.errorMsg = error; console.log(error);}         
-     
-      
+      (data) => {
+        this.user = data; console.log(data);
+        this.user = this.dbUserService.getUsers().subscribe(
+          (data) => {
+            this.user = data; console.log(data);
+            this.router.navigate(['/user-management']);
+          },
+          (error) => { this.errorMsg = error; console.log(error); }
+        );
+      },
+      (error) => { this.errorMsg = error; console.log(error); }
+
+
     );
-    this.user = this.dbUserService.getUsers().subscribe(
-      (data) => {this.user = data; console.log(data);},
-      (error) => {this.errorMsg = error; console.log(error);}
-    );
-    
-    this.router.navigate(['/user-management']);
+
+
+
   }
-  OnClickCancel()
-  {
+  OnClickCancel() {
     this.router.navigate(['/user-management/']);
   }
 
