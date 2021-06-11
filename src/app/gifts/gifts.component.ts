@@ -17,6 +17,7 @@ export class GiftsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.pInfoModel.price = 10.00
   }
 
   cancel() {

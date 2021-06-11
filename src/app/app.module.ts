@@ -26,6 +26,7 @@ import { DonationTypeService } from './services/donation-type.service';
 import { PersonalInformationService } from './services/personal-information.service';
 import { DonateService } from './services/donate.service';
 import { CookieService } from 'ngx-cookie-service';
+import { MinPriceDirective } from './min-price.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CookieService } from 'ngx-cookie-service';
     PersonalInformationComponent,
     GiftsComponent,
     ShoppingCartComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    MinPriceDirective
 
   ],
 
