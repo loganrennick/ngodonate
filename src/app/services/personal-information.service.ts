@@ -25,6 +25,9 @@ export class PersonalInformationService {
     return this.http.get<PersonalInfo[]>(this._url + '/User/' + userid).pipe(catchError(this.errorHandler));
   }
 
+  getPersonalInfoDonation(userid: any): Observable<PersonalInfo> {
+     return this.http.get<PersonalInfo>(this._url +'/' +userid).pipe(catchError(this.errorHandler));
+  }
   postPersonalInfo(record: any): Observable<PersonalInfo[]> {
     return this.http.post<PersonalInfo[]>(this._url, record)
       .pipe(catchError(this.errorHandler));

@@ -1,20 +1,32 @@
-<<<<<<< HEAD
-<div class="p-3 border mr-3">
-=======
 <div class="p-3 mr-3">
->>>>>>> 31d54226929e2eb6369146f5e615d9a2538f0070
     <div class="p-4" style="background-color: #343a40; color: white; border-radius: 15px;">
         <h3 class="pb-3">Donations Log</h3>
         <table class="table table-bordered" style="background-color: #464B4F;">
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Amount </th>
+                    <th>Donation Type</th>
                     <th>Date</th>
-                    <th>Amount</th>
-                    <th>Donation Type</th>                   
+                                       
                 </tr>
             </thead>
             <tbody>
+                <tr *ngFor="let rec of donationLog; let i=index">
+                    <td>
+                        {{rec.tName}}
+                    </td>
+                    <td>
+                        {{rec.tAmount}}
+                    </td>
+                    <td>
+                        {{rec.tDonationType}}
+                    </td>
+                    <td>
+                        {{rec.tDate}}
+                    </td>
+
+            </tr>
                
                
             <tbody>
