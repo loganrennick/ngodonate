@@ -28,6 +28,20 @@ export class RegistrationComponent implements OnInit {
 
   onFormSubmit(RegistrationForm: any) {
     this.dbUserService.postIntoUsers(this.regModel).subscribe(
+<<<<<<< HEAD
+      (data) => {this.user = data;console.log(data);
+        this.users = this.dbUserService.getUsers().subscribe(
+          (data) => {this.users = data; console.log(data);},
+          (error) => {this.errorMsg = error; console.log(error);}
+        );    
+        },
+    (error) => this.errorMsg = error
+    );
+
+    
+  this.router.navigate(['/user-management/']);
+
+=======
       (data) => {
         this.user = data; console.log(data);
         this.users = this.dbUserService.getUsers().subscribe(
@@ -40,6 +54,7 @@ export class RegistrationComponent implements OnInit {
       },
       (error) => this.errorMsg = error
     );
+>>>>>>> 31d54226929e2eb6369146f5e615d9a2538f0070
   }
 
   OnClickCancel() {

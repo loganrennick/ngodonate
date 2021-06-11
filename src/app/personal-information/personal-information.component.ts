@@ -47,7 +47,11 @@ export class PersonalInformationComponent implements OnInit {
 
   continue() {
     this.pInfoModel.userID = this.user;
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 31d54226929e2eb6369146f5e615d9a2538f0070
 
     if (this.shouldPost) {
       console.log("should post")
@@ -65,10 +69,12 @@ export class PersonalInformationComponent implements OnInit {
 
     else {
       console.log("should not post")
+
       this.infoService.updatePersonalInfo(this.model._id, this.pInfoModel).subscribe(
         (data) => {
           this.donateService.storePersonalDetails(this.model._id);
           this.data = data;
+          this.donateService.storePersonalDetails(this.model._id);
           this.router.navigate(['/gifts/']);
         },
         (error) => {

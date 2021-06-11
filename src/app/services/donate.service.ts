@@ -41,6 +41,13 @@ export class DonateService {
       .pipe(catchError(this.errorHandler));
   }
 
+  public getDonations():Observable<Donation[]>
+  {
+
+    return this.http.get<Donation[]>(this._url)
+    .pipe(catchError(this.errorHandler));
+
+  }
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server error");
   }
