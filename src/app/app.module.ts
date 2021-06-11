@@ -20,8 +20,12 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DonationTypeService } from './services/donation-type.service';
+import { PersonalInformationService } from './services/personal-information.service';
+import { DonateService } from './services/donate.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,7 @@ import {MatButtonModule} from '@angular/material/button';
     GiftsComponent,
     ShoppingCartComponent,
     ThankYouComponent
-   
+
   ],
 
   imports: [
@@ -51,10 +55,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatButtonModule
   ],
-  providers: [UsersService, LoginService],
+  providers: [UsersService, LoginService, DonationTypeService, PersonalInformationService, DonateService, CookieService],
   bootstrap: [AppComponent]
 
 })
-export class AppModule { 
+export class AppModule {
 
 }
