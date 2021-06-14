@@ -58,7 +58,7 @@
                     </div>
                     <hr>
                     <div class="row d-flex justify-content-center">
-                        <h5>Grand Total - {{getTotal() | currency}}</h5>
+                        <h5>Grand Total: {{getTotal() | currency}}</h5>
                     </div>
                     <hr>
                     <div class="my-4 pt-5  row d-flex justify-content-center">
@@ -75,7 +75,7 @@
                     </button>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
-                    <input type="number" min="0" class="form-control w-25 mr-3" [(ngModel)]="this.gift.quantity"
+                    <input type="number" min="1" class="form-control w-25 mr-3" [(ngModel)]="this.gift.quantity"
                         name="Quantity">
                     <button type="button" class="btn btn-primary " (click)="updateQuantity()">Ok</button>
                 </div>
