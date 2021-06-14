@@ -10,12 +10,15 @@ Admin users have access to everything base users have access to. In addition, th
 ![Screenshot of shopping cart page](./src/assets/screenshot03.png)
 ## Process
 ### Design
-Workflow was organized prior to development with the development of a SRS diagram and user story spreadsheet. The spreadsheet kept track of what needed to be accomplished and what stages of development each component was at.
+Workflow was organized prior to development with the creation of a SRS diagram and user story spreadsheet. The spreadsheet kept track of what needed to be accomplished and what stages of development each component was at.
 ### Built with
 * Semantic HTML5 markup
 * [Bootstrap](https://getbootstrap.com/) - front-end framework
 * [Angular](https://angular.io/) - web application framework
 * [Typescript](https://www.typescriptlang.org/) - programming language, compiles to Javascript
+* [Node.js](https://nodejs.org/) - back-end JavaScript runtime environment 
+* [Express](http://expressjs.com/) - back-end web application framework for node.js
+* [MongoDB](https://www.mongodb.com/) - document oriented database
 ## Authors 
 * [Logan Rennick](https://github.com/loganrennick)
 * [Usha Bommasamudram](https://github.com/ushadhir)
