@@ -9,6 +9,7 @@ import { LoginService } from './services/login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  [x: string]: any;
 
 
   constructor(public auth: LoginService, private cookieService: CookieService, public router: Router) {
