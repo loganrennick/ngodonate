@@ -1,27 +1,21 @@
 # NGODonate
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This is a web portal designed to accomodate fundraising for non-profit organizations across the world. Users can view the fundrasing events and contribute to them as they please.
+## Functional Specification
+We implemented two user variants, base users and admin users. 
+Base users can add their personal information and contribute monetary gifts towards varying causes. 
+Admin users have access to everything base users have access to. In addition, they may create new users, view the log of donations, and manage the donation events.
+## Screenshots
+![Screenshot of login page](./src/assets/screenshot01.png)
+![Screenshot of donation group management page](./src/assets/screenshot02.png)
+![Screenshot of shopping cart page](./src/assets/screenshot03.png)
+## Process
+### Design
+Workflow was organized prior to development with the development of a SRS diagram and user story spreadsheet. The spreadsheet kept track of what needed to be accomplished and what stages of development each component was at.
+### Built with
+* Semantic HTML5 markup
+* [Bootstrap](https://getbootstrap.com/) - front-end framework
+* [Angular](https://angular.io/) - web application framework
+* [Typescript](https://www.typescriptlang.org/) - programming language, compiles to Javascript
+## Authors 
+[Logan Rennick](https://github.com/loganrennick)
+[Usha Bommasamudram](https://github.com/ushadhir)
