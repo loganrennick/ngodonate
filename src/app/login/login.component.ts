@@ -23,6 +23,20 @@ export class LoginComponent implements OnInit {
   public modalRef: any;
 
   ngOnInit(): void {
+
+    if(this.auth.isUserLoggedIn()==true)
+    {
+      console.log("logged Already logged in");
+      if(this.auth.isUserAdmin())
+      {
+        this.router.navigate(['/user-management/']);
+      }
+      else
+      {
+        this.router.navigate(['/donation-start/']);
+      }
+      
+    }
   }
 
   onFormSubmit(loginForm: any, template: TemplateRef<any>) {

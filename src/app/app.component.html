@@ -33,8 +33,26 @@
         </nav>
       </div>
     </div>
+         
+      <div *ngIf="auth.isUserLoggedIn() && (auth.isUserAdmin() == false)" class="col-2">
+        <div class="d-flex align-items-stretch">
+          <nav class="navbar navbar-dark bg-dark p-3 ml-3 w-100">
+            <div class="container-fluid">
+              <ul class="navbar-nav d-flex flex-column">
+                <p class="profile" style="color:white; margin-top: 1rem;"><i class="bi bi-person-fill"></i>
+                  {{auth.getUsername()}}</p>                   
+                  <li class="nav-item py-2">
+                  <a class="nav-link nav-custom" (click)="OnLogout()" routerLinkActive="active">Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    
     <div class="col-10">
       <router-outlet></router-outlet>
     </div>
   </div>
+
 </div>

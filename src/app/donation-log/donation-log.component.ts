@@ -31,7 +31,8 @@ export class DonationLogComponent implements OnInit {
       (data) => {
         this.donations = data; console.log(this.donations);
         for (const iterator of this.donations) {
-          tDate = iterator.donationDate;
+         
+          console.log(tDate);
           this.dbPersonalService.getPersonalInfoDonation(iterator.personalInfoId).subscribe(
             (pdata) => {
               this.person = pdata; console.log(pdata);
@@ -39,8 +40,10 @@ export class DonationLogComponent implements OnInit {
               for (const g of iterator.gifts) {
                 tAmount = g.price * g.quantity;
                 tDonationType = g.donationName;
+                tDate = g.donationDate;
 
                 this.donationLog.push({ tName, tAmount, tDonationType, tDate });
+                //console.log(this.donationLog);
               }
 
               console.log(this.donationLog);

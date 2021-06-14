@@ -27,6 +27,8 @@ export class DonateService {
 
   public storeGift(gift: Gift) {
     gift.donationName = this.donationName;
+    gift.donationDate=formatDate(Date.now(), 'yyyy/MM/dd', 'en');
+
     this.gifts.push(gift);
   }
 
@@ -42,9 +44,9 @@ export class DonateService {
     let donation = new Donation();
     donation.gifts = gifts;
     donation.personalInfoId = this.personalInfoId;
-    donation.donationDate=formatDate(Date.now(), 'yyyy/MM/dd', 'en');
+    //donation.donationDate=formatDate(Date.now(), 'yyyy/MM/dd', 'en');
     console.log("Date in purchase");
-    console.log(donation.donationDate);
+    console.log(donation);
     return this.http.post<Donation[]>(this._url, donation)
       .pipe(catchError(this.errorHandler));
   }

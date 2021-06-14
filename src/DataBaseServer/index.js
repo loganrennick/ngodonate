@@ -60,8 +60,7 @@ const PersonalInfoSchema = new mongoose.Schema({
 
 const DonationSchema = new mongoose.Schema({
     personalInfoId: String,
-    gifts: [],
-    donationDate:String
+    gifts: []    
 })
 
 User = mongoose.model('User', UserSchema);
