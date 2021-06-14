@@ -17,5 +17,5 @@ Workflow was organized prior to development with the development of a SRS diagra
 * [Angular](https://angular.io/) - web application framework
 * [Typescript](https://www.typescriptlang.org/) - programming language, compiles to Javascript
 ## Authors 
-[Logan Rennick](https://github.com/loganrennick)
-[Usha Bommasamudram](https://github.com/ushadhir)
+* [Logan Rennick](https://github.com/loganrennick)
+* [Usha Bommasamudram](https://github.com/ushadhir)
